@@ -3,11 +3,11 @@ var ITI = 1000,
   time_limit = 60 * (60 * 1000),
   stimAlphas = [0.65],
   unitSize = 4,
-  breakEvery = 10,
-  exp_num_faces = 10, // number of different faces to use per experiment  *yuval
-  repetitions = 2, // number of repetitions of each face   *yuval
-  total_num_faces = 300, // total number of faces in the database (images file) *yuval
-  train_repetitions = 6,
+  breakEvery = 50,
+  exp_num_faces = 50, // number of different faces to use per experiment  *yuval
+  repetitions = 4, // number of repetitions of each face   *yuval
+  total_num_faces = 300, // total number of faces in the database (e.g 300- for one gender only) (images file) *yuval
+  train_repetitions = 25,
   train_alpha = 0.60, //keep this below stimAlphas. important for behave part. *yuval
   trialLength = 0, // 0 is no limit
   fade_in_time = 1,
@@ -279,13 +279,26 @@ var instructions = {
 /** 4----- PRACTICE BLOCK  **/
 
 /*** bRMS practice block ***/
+//Define stimuli pool for experiment
+var all_images = []; 
+//enter gender option here(?) in the meanwhile using female  *yuval
+for (i=0; i < total_num_faces; i++) {   //creating an array of all possible images names    *yuval
+	all_images.push('../static/images/f' + ('000'+i).substr(-3, 3) + '.jpg');
+}
+all_images = jsPsych.randomization.shuffle(all_images); //after shuffling, the chosen images will be taken from this 'all_images' array. *yuval
+
+
+
 // Define stimuli for practice
-var practice_stimuli = [];
-for (i = 1; i <= train_repetitions; i++) {
+var pre_practice_stimuli = all_images;
+pre_practice_stimuli = pre_practice_stimuli.slice (0, train_repetitions);  //take first images for practice (not sure if 'pre' array neccesary but works well)  *yuval
+var practice_stimuli=[];
+
+for (i = 0; i < train_repetitions; i++) {
   practice_stimuli.push({
-    stimulus: '../static/images/yaniv_' + i + '.jpg',
+    stimulus: pre_practice_stimuli[i],
     data: {
-      stimulus: 'yaniv_' + i,
+      stimulus: pre_practice_stimuli[i],
       stimulus_type: 'normal',
       timing_response: trialLength,
       fade_out_time: fade_out_time,
@@ -300,8 +313,10 @@ for (i = 1; i <= train_repetitions; i++) {
     stimulus_alpha: train_alpha
   });
 }
-/* shuffle stimuli */
-var practice_stimuli = jsPsych.randomization.shuffle(practice_stimuli);
+
+all_images = all_images.slice (train_repetitions, train_repetitions + exp_num_faces); //getting rid of images used in practice 
+
+
 
 
 /* define block */
@@ -408,13 +423,8 @@ var mainBlockIns = {
 
 // Define stimuli for bRMS
 
-var all_images = []; 
-//enter gender option here   *yuval
-for (i=0; i < total_num_faces; i++) {   //creating an array of all possible images names    *yuval
-	all_images.push('../static/images/f42887_e_' + ('000'+i).substr(-3, 3) + '.jpg');
-}
-all_images = jsPsych.randomization.shuffle(all_images); //after shuffling, the chosen images will be taken from this 'all_images' array. *yuval
-var used_images = all_images.slice (0, exp_num_faces);  //creating 'used_images[]', holding all and only faces going to be used. *yuval
+
+var used_images = all_images.slice (0, exp_num_faces);  //creating 'used_images[]', holding all and only faces going to be used in the main block. *yuval
 var stimuli = [];
 
 
@@ -546,7 +556,7 @@ var bRMS_block = {
   visUnit: function() {
     return unitSize 
   },
-  on_finish: function() {                 // needed עשה בעיות, מראה רק גירוי אחד ומפסיק הניסוי
+  on_finish: function() {                 
     var d = new Date();
     if ((d.getTime() - exp_start_time) > time_limit) {   //problem. d and exp_start_time always equal. *ask yaniv
       jsPsych.endCurrentTimeline();
@@ -643,7 +653,7 @@ var debrief = [{
 
 // Put it all together
 var experiment_blocks = [];
- experiment_blocks.push(fullscreen);   //needed eventualy 
+ experiment_blocks.push(fullscreen);   
  experiment_blocks.push(preCalibIns)  
  experiment_blocks.push(makeSureLoop); 
  experiment_blocks.push(instructions);
