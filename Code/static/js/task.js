@@ -796,13 +796,13 @@ var debrief = [{
 
 // Put it all together
 var experiment_blocks = [];
-//experiment_blocks.push(fullscreen);
-//experiment_blocks.push(preCalibIns)
-//experiment_blocks.push(makeSureLoop);
-//experiment_blocks.push(instructions);
-//experiment_blocks.push(secChanceLoop);
-//experiment_blocks.push(mainBlockIns);
-//experiment_blocks.push(bRMS_block);
+experiment_blocks.push(fullscreen);
+experiment_blocks.push(preCalibIns)
+experiment_blocks.push(makeSureLoop);
+experiment_blocks.push(instructions);
+experiment_blocks.push(secChanceLoop);
+experiment_blocks.push(mainBlockIns);
+experiment_blocks.push(bRMS_block);
 experiment_blocks = experiment_blocks.concat(debrief);
 
 // Save data function
