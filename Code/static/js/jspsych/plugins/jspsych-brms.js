@@ -82,7 +82,7 @@ jsPsych.plugins["bRMS"] = (function() {
         description: "Duration of ITI reserved for making sure stimulus image\
          is loaded."
       },
-      mond_max_alpha : {
+      mond_max_alpha: {
         type: jsPsych.plugins.parameterType.FLOAT,
         pretty_name: 'Mondrian maximum contrast',
         default: 1,
@@ -92,6 +92,28 @@ jsPsych.plugins["bRMS"] = (function() {
         type: jsPsych.plugins.parameterType.INT,
         default: -1,
         description: "Stimulus side: 1 is right, 0 is left. -1 is random"
+      },
+      bigProblemDuration: {
+        type: jsPsych.plugins.parameterType.INT,
+        default: 100,
+        description: 'If a frame is presented for more than x ms, regard the \
+        trial as a big problem'
+      },
+      smallProblemStimDuration: {
+        type: jsPsych.plugins.parameterType.INT,
+        default: 40,
+        description: 'Stimulus presentation criterion for small problem'
+      },
+      smallProblemMondDuration: {
+        type: jsPsych.plugins.parameterType.INT,
+        default: 50,
+        description: 'Mondrian presentation criterion for small problem'
+      },
+      includeVBLinData: {
+        type: jsPsych.plugins.parameterType.BOOL,
+        default: false,
+        description: 'Whether to include vbl array in data: increases memory \
+        requirements.'
       }
     }
   }
@@ -121,11 +143,11 @@ jsPsych.plugins["bRMS"] = (function() {
         stimWidth = 61 * trial.visUnit,
         stimHeight = 61 * trial.visUnit;
 
-        if (trial.stimulus_side < 0 ){
-          stimulus_side = Math.round(Math.random());
-        }else{
-          stimulus_side = trial.stimulus_side;
-        }
+      if (trial.stimulus_side < 0) {
+        stimulus_side = Math.round(Math.random());
+      } else {
+        stimulus_side = trial.stimulus_side;
+      }
 
       // this array holds handlers from setTimeout calls
       // that need to be cleared if the trial ends early
@@ -153,6 +175,55 @@ jsPsych.plugins["bRMS"] = (function() {
           jsPsych.pluginAPI.cancelKeyboardResponse(keyboardListener);
         }
 
+        // Analyse animation performance
+        tvbl = {};
+        tvbl['time'] = vbl['time'].filter(function(value, index) {
+          return vbl['mondNum'][index] >= 0
+        }),
+        tvbl['mondNum'] = vbl['mondNum'].filter(function(value, index) {
+          return vbl['mondNum'][index] >= 0
+        }),
+        tvbl['mondAlpha'] = vbl['mondAlpha'].filter(function(value, index) {
+          return vbl['mondNum'][index] >= 0
+        });
+
+        tvbl['refresh'] = [];
+        for (i = 0; i < tvbl['time'].length; i++) {
+          tvbl['refresh'].push(tvbl['time'][i + 1] - tvbl['time'][i]);
+        } // get differential time stamps
+
+        function onlyUnique(value, index, self) {
+          return self.indexOf(value) === index;
+        } // get unique mondrian numbers
+
+
+        mond = {}; // represent vbl per mondrian
+        mond['nums'] = tvbl['mondNum'].filter(onlyUnique);
+
+        mond['mond_duration'] = [];
+        mond['stim_duration'] = [];
+        for (i = 0; i < mond['nums'].length; i++) {
+          mond['mond_duration'].push(tvbl['refresh'].filter(function(value, index) {
+              return tvbl['mondNum'][index] == mond['nums'][i] &&
+                tvbl['mondAlpha'][index] > 0
+            }).reduce((a, b) => a + b, 0)),
+            mond['stim_duration'].push(tvbl['refresh'].filter(function(value, index) {
+              return tvbl['mondNum'][index] == mond['nums'][i] &&
+                tvbl['mondAlpha'][index] == 0
+            }).reduce((a, b) => a + b, 0));
+        } // some vbl refresh seperately for mondrian and stim for each presentation
+
+        bProblem = mond['nums'].filter(function(value, index) {
+          return mond['mond_duration'][index] > trial.bigProblemDuration & value > 0 ||
+            mond['stim_duration'][index] > trial.bigProblemDuration
+        }).length; // Count instances of lag in animation
+
+        sProblem = mond['nums'].filter(function(value, index) {
+          return mond['stim_duration'][index] > trial.smallProblemStimDuration &&
+            (mond['mond_duration'][index] < trial.smallProblemMondDuration ||
+              mond['mond_duration'][index + 1] < trial.smallProblemMondDuration)
+        }).length; // Count instances of stimulus presented for too long.
+
         // gather the data to store for the trial
         var trial_data = {
           "rt": response.rt,
@@ -161,8 +232,14 @@ jsPsych.plugins["bRMS"] = (function() {
           "key_press": response.key,
           "acc": (response.key == 68 & stimulus_side == 0) |
             (response.key == 75 & stimulus_side == 1),
-          "vbl": vbl
+          'animation_performance': mond,
+          'bProblem': bProblem,
+          'sProblem': sProblem
         };
+
+        if (trial.includeVBLinData) {
+          trial_data.vbl = vbl;
+        }
 
         // clear the display
         display_element.innerHTML = '';
