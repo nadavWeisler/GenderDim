@@ -6,7 +6,7 @@
 2. V Change faces by condition.
 3. V Use 25 faces from the 300 faces for training.
 4. V Change instructions according to condition: men / women faces.
-5. Add questionnaires: V political inclination , road accidents, sexual orientation. // Yuval
+5. Add questionnaires: V political inclination, political self reported , V road accidents, sexual orientation. // Yuval
 6. Prepare code for Psiturk: Set-up, data saving, experiment ending, condition. // Yaniv
 7. V Check experiment time limit - might not be working. // Yuval
 8. V Update consent form.

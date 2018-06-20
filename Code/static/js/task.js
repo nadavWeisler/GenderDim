@@ -727,9 +727,47 @@ var debrief = [{
       required: true
     }]
   },
-  
-   
-  
+  {
+    type: "survey-multi-choice",
+    questions: [{
+        prompt: "Do you have a driver’s license?",
+        options: ["Yes", "No"],
+        required: true
+      }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Compared to the average driver, how would you rate your own driving?",    //*reverse scored 
+      labels: ["1<br>Much worse than average", "2", "3", "4", "5", "6", "7<br>Much better than average"],
+      required: true
+    }]
+  },
+  {
+    type: "survey-multi-choice",
+    questions: [{
+        prompt: "Were you involved in a road accident, as either a driver or a pedestrian, during the last three years (including minor accidents resulting in no injuries or damage)?",
+        options: ["Yes", "No"],
+        required: true
+      }]
+  },
+  {
+    type: "survey-text",
+    questions: [{
+        prompt: "In your best estimate, how many accidents were you involved in during the last three years as a driver, including minor accidents with no injuries or damage? (If none, mark 0)",
+        columns: 20,
+        rows: 1,
+        value: ''
+      },
+      {
+        prompt: 'In your best estimate, how many accidents were you involved in during the last three years as a pedestrian,\
+		including minor accidents with no injuries or damage? (If none, mark 0)',
+        columns: 60,
+        rows: 1,
+        value: ''
+      }
+    ]
+  },
   {
     type: "html-keyboard-response",
     stimulus: '<div class="center">Thank you for participating in this study!<p>\
@@ -746,13 +784,13 @@ var debrief = [{
 
 // Put it all together
 var experiment_blocks = [];
-experiment_blocks.push(fullscreen);
-experiment_blocks.push(preCalibIns)
-experiment_blocks.push(makeSureLoop);
-experiment_blocks.push(instructions);
-experiment_blocks.push(secChanceLoop);
-experiment_blocks.push(mainBlockIns);
-experiment_blocks.push(bRMS_block);
+//experiment_blocks.push(fullscreen);
+//experiment_blocks.push(preCalibIns)
+//experiment_blocks.push(makeSureLoop);
+//experiment_blocks.push(instructions);
+//experiment_blocks.push(secChanceLoop);
+//experiment_blocks.push(mainBlockIns);
+//experiment_blocks.push(bRMS_block);
 experiment_blocks = experiment_blocks.concat(debrief);
 
 // Save data function
