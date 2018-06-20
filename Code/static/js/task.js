@@ -21,6 +21,8 @@ var ITI = 1000,
   experiment_RT_trial_threshold = 5,
   experiment_RT_threshold = 300;
 
+/*** Male / Female condition ***/
+var condition = Math.round(Math.random()); // 0 is male, 1 is female. Resolved here now, later from Psiturk
 
 /*** Enter fullscreen ***/
 var fullscreen = {
@@ -50,8 +52,7 @@ var preCalibInsText = [{
     <p>Please read the instructions carefully.</p>\
     <p align='center'><i>Press the space bar to continue.</i></p></div>"],
     choices: [32]
-  } //,
-  /***
+  } ,
     {
       stimulus: ["<div class='center'><p>We will begin by calibrating the experiment \
       for the size of your screen.</p>\
@@ -94,7 +95,7 @@ var preCalibInsText = [{
       stimulus: ["<div class='center'><p>Please have a coin at hand.</p>\
       <p>Press the space bar to start the calibration stage.</p></div>"],
       choices: [32]
-    } ***/
+    }
 ];
 
 var preCalibIns = {
@@ -224,6 +225,16 @@ var makeSureLoop = {
 
 
 /** 3------- PRACTICE INSTRUCTIONS ***/
+// Change instructions according to condition
+if (condition) {
+  var gender = 'female';
+  var person = 'woman';
+  var mersons = 'women';
+} else {
+  var gender = 'male';
+  var person = 'man';
+  var mersons = 'men';
+}
 
 var instruction_text = [{
     stimulus: ["<p>We will now continue to the main task.</p>\
@@ -233,15 +244,18 @@ var instruction_text = [{
   /***,
     {
       stimulus: ["<div class = 'center'><p>You will be presented with rapidly \
-      changing patterns of rectangles. Through these rectangles, faces \
-      will appear. Your task will be to indicate the location of \
+      changing patterns of rectangles. Through these rectangles, " +
+      gender +
+      " faces will appear. Your task will be to indicate the location of \
       the faces, or any part of them, as soon as they appear.</p>\
       <p align='center'><i>Press the space bar to continue.</i></p></div>"],
       choices: [32]
     },
     {
-      stimulus: ["<div class = 'center'><p>If the face appeared in the right half \
-      of the screen, press the right key. If the face appeared in the left half \
+      stimulus: ["<div class = 'center'><p>If a " +
+      person + "'s face appeared in the right half \
+      of the screen, press the right key. If a " +
+      person + "'s face appeared in the left half \
       of the screen, press the left key.</p>\
       <p align='center'><i>Press the space bar to continue.</i></p></div>"],
       choices: [32]
@@ -281,9 +295,14 @@ var instructions = {
 /*** bRMS practice block ***/
 //Define stimuli pool for experiment
 var all_images = [];
-//enter gender option here(?) in the meanwhile using female  *yuval
+// Choose male / female files
+if (condition) {
+  var gender = 'f';
+}else{
+  var gender = 'm';
+}
 for (i = 1; i <= total_num_faces; i++) { //creating an array of all possible images names    *yuval
-  all_images.push('../static/images/f' + ('000' + i).substr(-3, 3) + '.jpg');
+  all_images.push('../static/images/' + gender + ('000' + i).substr(-3, 3) + '.jpg');
 }
 all_images = jsPsych.randomization.shuffle(all_images); //after shuffling, the chosen images will be taken from this 'all_images' array. *yuval
 
