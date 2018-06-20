@@ -1,6 +1,6 @@
 // Parameters
 var ITI = 1000,
-  time_limit = 60 * (60 * 1000),
+  time_limit = 2 * (60 * 1000),
   stimAlphas = 0.4,
   unitSize = 4,
   breakEvery = 50,
@@ -487,7 +487,7 @@ var behave = {
             jsPsych.data.get().filter({
               trial_type: "bRMS"
             }).last(experiment_performance_trials).select('acc').mean() < experiment_performance_thresh) || // performance bad
-          (rt_trialN >= experiment_RT_trials && // sufficient rt data
+          (trialN >= experiment_RT_trials && // sufficient rt data
             jsPsych.data.get().filter({
               trial_type: "bRMS"
             }).last(experiment_RT_trials).filterCustom(function(x) {
