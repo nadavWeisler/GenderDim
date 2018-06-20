@@ -622,6 +622,81 @@ var debrief = [{
   },
   {
     type: "html-keyboard-response",
+    stimulus: "<div class='center'><p>You will now be presented with a few more statements.\
+	Please read each statement carfully, and indicate the degree to which you agree or disagree with it.</p>\
+    <p>We remind you that your answers are completely annonymous.</p>\
+    <p align='center'><i>Press the space bar to continue.</i></p></div>",
+    choices: [32]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Laws designed to protect the environment pose too high a cost on businesses that contribute to the economy.",
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "A woman should have the right to choose what to do with her body, even if that means getting an abortion.", //*reverse scored 
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "The United States should not have invaded Iraq.",    //*reverse scored
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Homosexuals should have the same right to marriage as anyone else.",   //*reverse scored
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Affirmative action gives those groups with a history of oppression a chance to get ahead.",  //*reverse scored
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Gun control laws are not nearly strict enough.",    //*reverse scored 
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "It is important for our legal system to use the death penalty as punishment for heinous crimes. ",
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Stem Cell research has important implications for medical advances, and should be pursued at all costs.", //*reverse scored
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  
+   
+  
+  {
+    type: "html-keyboard-response",
     stimulus: '<div class="center">Thank you for participating in this study!<p>\
     In this study we were interested in examining reaction-times and \
     precision in a dynamic environment.</p>\
@@ -636,13 +711,13 @@ var debrief = [{
 
 // Put it all together
 var experiment_blocks = [];
-experiment_blocks.push(fullscreen);
-experiment_blocks.push(preCalibIns)
-experiment_blocks.push(makeSureLoop);
-experiment_blocks.push(instructions);
-experiment_blocks.push(secChanceLoop);
-experiment_blocks.push(mainBlockIns);
-experiment_blocks.push(bRMS_block);
+//experiment_blocks.push(fullscreen);
+//experiment_blocks.push(preCalibIns)
+//experiment_blocks.push(makeSureLoop);
+//experiment_blocks.push(instructions);
+//experiment_blocks.push(secChanceLoop);
+//experiment_blocks.push(mainBlockIns);
+//experiment_blocks.push(bRMS_block);
 experiment_blocks = experiment_blocks.concat(debrief);
 
 // Save data function
