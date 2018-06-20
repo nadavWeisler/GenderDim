@@ -19,7 +19,9 @@ var ITI = 1000,
   train_performance_thresh = .85,
   experiment_RT_trials = 8,
   experiment_RT_trial_threshold = 5,
-  experiment_RT_threshold = 300;
+  experiment_RT_threshold = 300,
+  sProblemCrit = 5,
+  bProblemCrit = 5 / train_repetitions;
 
 /*** Male / Female condition ***/
 var condition = Math.round(Math.random()); // 0 is male, 1 is female. Resolved here now, later from Psiturk
@@ -389,7 +391,40 @@ var performanceMSG_practice = {
       //        }
       //      });
     },
-  };
+  },
+  poor_animation = {
+    type: 'html-keyboard-response',
+    conditional_function: function() {
+      if (jsPsych.data.get().last(train_repetitions).select('sProblem').mean() > sProblemCrit ||
+        jsPsych.data.get().last(train_repetitions).select('bProblem').mean() > bProblemCrit) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    timeline: [{
+      stimulus: '<div class='center'>\
+  <p>It seems that the animation is not presented correctly on your computer.</p>\
+  <p>This may be due to old hardware, or too many open applications.</p>\
+  <p>The experiment will stop now. <p>\
+  <p>We would like to compensate you for your time. \
+  Please return this HIT, and search for "Animation compensation HIT".\
+  Accept it, and you will be paid soon.</p>\
+  <p>Thank you for your time!</p>\
+  <p>For any questions, please email \
+  yaniv.abir+mturk@mail.huji.ac.il</p>\
+  <p>Press the space bar to continue.</p></div>'
+    }],
+    choices: [32],
+    //** needed eventualy **//
+    on_finish: function() {
+      //      psiturk.saveData({
+      //        success: function() {
+      jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
+      //        }
+      //      });
+    }
+  }
 
 
 jsPsych.data.addProperties({
@@ -397,7 +432,7 @@ jsPsych.data.addProperties({
 });
 
 var secChanceLoop = {
-  timeline: [performanceMSG_practice, bRMS_practice, stop_practice_loop],
+  timeline: [performanceMSG_practice, bRMS_practice, poor_animation, stop_practice_loop],
   loop_function: function() {
     if (jsPsych.data.get().last(train_repetitions).select('acc').mean() < train_performance_thresh) {
       jsPsych.data.addProperties({
