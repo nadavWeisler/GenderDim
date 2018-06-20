@@ -403,17 +403,17 @@ var performanceMSG_practice = {
       }
     },
     timeline: [{
-      stimulus: '<div class='center'>\
+      stimulus: "<div class = 'center'>\
   <p>It seems that the animation is not presented correctly on your computer.</p>\
   <p>This may be due to old hardware, or too many open applications.</p>\
   <p>The experiment will stop now. <p>\
   <p>We would like to compensate you for your time. \
-  Please return this HIT, and search for "Animation compensation HIT".\
+  Please return this HIT, and search for 'Animation compensation HIT'.\
   Accept it, and you will be paid soon.</p>\
   <p>Thank you for your time!</p>\
   <p>For any questions, please email \
   yaniv.abir+mturk@mail.huji.ac.il</p>\
-  <p>Press the space bar to continue.</p></div>'
+  <p>Press the space bar to continue.</p></div>"
     }],
     choices: [32],
     //** needed eventualy **//
@@ -625,6 +625,18 @@ var debrief = [{
         options: ["Male", "Female", "Other"],
         required: true
       },
+	  {
+        prompt: "Do you consider yourself to be:",
+        options: ["a) Heterosexual or straight;", "b) Gay or lesbian;", "c) Bisexual?"],
+        required: true
+      },
+	  {
+        prompt: "People are different in their sexual attraction to other people.\
+		Which best describes your feelings?",
+        options: ["Only attracted to females", "Mostly attracted to females",
+		"Equally attracted to females and males", "Mostly attracted to males","Only attracted to males", "Not sure"],
+        required: true
+      },
       {
         prompt: "What is your dominant hand?",
         options: ["Right", "Left", "Both"],
@@ -657,6 +669,119 @@ var debrief = [{
   },
   {
     type: "html-keyboard-response",
+    stimulus: "<div class='center'><p>You will now be presented with a few more statements.\
+	Please read each statement carfully, and indicate the degree to which you agree or disagree with it.</p>\
+    <p>We remind you that your answers are completely annonymous.</p>\
+    <p align='center'><i>Press the space bar to continue.</i></p></div>",
+    choices: [32]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Laws designed to protect the environment pose too high a cost on businesses that contribute to the economy.",
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "A woman should have the right to choose what to do with her body, even if that means getting an abortion.", //*reverse scored 
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "The United States should not have invaded Iraq.",    //*reverse scored
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Homosexuals should have the same right to marriage as anyone else.",   //*reverse scored
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Affirmative action gives those groups with a history of oppression a chance to get ahead.",  //*reverse scored
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Gun control laws are not nearly strict enough.",    //*reverse scored 
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "It is important for our legal system to use the death penalty as punishment for heinous crimes. ",
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Stem Cell research has important implications for medical advances, and should be pursued at all costs.", //*reverse scored
+      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+      required: true
+    }]
+  },
+  {
+    type: "survey-multi-choice",
+    questions: [{
+        prompt: "Do you have a driver’s license?",
+        options: ["Yes", "No"],
+        required: true
+      }]
+  },
+  {
+    type: 'survey-likert',
+    questions: [{
+      prompt: "Compared to the average driver, how would you rate your own driving?",    //*reverse scored 
+      labels: ["1<br>Much worse than average", "2", "3", "4", "5", "6", "7<br>Much better than average"],
+      required: true
+    }]
+  },
+  {
+    type: "survey-multi-choice",
+    questions: [{
+        prompt: "Were you involved in a road accident, as either a driver or a pedestrian, during the last three years (including minor accidents resulting in no injuries or damage)?",
+        options: ["Yes", "No"],
+        required: true
+      }]
+  },
+  {
+    type: "survey-text",
+    questions: [{
+        prompt: "In your best estimate, how many accidents were you involved in during the last three years as a driver, including minor accidents with no injuries or damage? (If none, mark 0)",
+        columns: 20,
+        rows: 1,
+        value: ''
+      },
+      {
+        prompt: 'In your best estimate, how many accidents were you involved in during the last three years as a pedestrian,\
+		including minor accidents with no injuries or damage? (If none, mark 0)',
+        columns: 60,
+        rows: 1,
+        value: ''
+      }
+    ]
+  },
+  {
+    type: "html-keyboard-response",
     stimulus: '<div class="center">Thank you for participating in this study!<p>\
     In this study we were interested in examining reaction-times and \
     precision in a dynamic environment.</p>\
@@ -671,13 +796,13 @@ var debrief = [{
 
 // Put it all together
 var experiment_blocks = [];
-experiment_blocks.push(fullscreen);
-experiment_blocks.push(preCalibIns)
-experiment_blocks.push(makeSureLoop);
-experiment_blocks.push(instructions);
-experiment_blocks.push(secChanceLoop);
-experiment_blocks.push(mainBlockIns);
-experiment_blocks.push(bRMS_block);
+//experiment_blocks.push(fullscreen);
+//experiment_blocks.push(preCalibIns)
+//experiment_blocks.push(makeSureLoop);
+//experiment_blocks.push(instructions);
+//experiment_blocks.push(secChanceLoop);
+//experiment_blocks.push(mainBlockIns);
+//experiment_blocks.push(bRMS_block);
 experiment_blocks = experiment_blocks.concat(debrief);
 
 // Save data function
