@@ -9,8 +9,8 @@
 5. Add questionnaires: political inclination, road accidents, sexual orientation. // Yuval
 6. Prepare code for Psiturk: Set-up, data saving, experiment ending, condition. // Yaniv
 7. V Check experiment time limit - might not be working. // Yuval
-8. Update consent form.
-9. Update ad.
+8. V Update consent form.
+9. V Update ad.
 10. Yuval tests experiment.
 11. Yaniv tests experiment.
 12. Clone to Amazon cloud.
