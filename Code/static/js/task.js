@@ -21,7 +21,7 @@ var ITI = 1000,
   experiment_RT_trials = 8,
   experiment_RT_trial_threshold = 5,
   experiment_RT_threshold = 450;
-  
+
 
 /*** Enter fullscreen ***/
 var fullscreen = {
@@ -29,7 +29,7 @@ var fullscreen = {
   fullscreen_mode: true,
   message: '<p>This study runs in fullscreen. To switch to full screen mode \
   and start the HIT, press the button below.</p>'
-}  
+}
 
 /** 1----coin instructions**/
 
@@ -52,7 +52,7 @@ var preCalibInsText = [{
     <p align='center'><i>Press the space bar to continue.</i></p></div>"],
     choices: [32]
   }//,
-/***  
+/***
   {
     stimulus: ["<div class='center'><p>We will begin by calibrating the experiment \
     for the size of your screen.</p>\
@@ -95,7 +95,7 @@ var preCalibInsText = [{
     stimulus: ["<div class='center'><p>Please have a coin at hand.</p>\
     <p>Press the space bar to start the calibration stage.</p></div>"],
     choices: [32]
-  } ***/ 
+  } ***/
 ];
 
 var preCalibIns = {
@@ -230,7 +230,7 @@ var instruction_text = [{
     stimulus: ["<p>We will now continue to the main task.</p>\
     <p align='center'><i>Press the space bar to continue.</i></p>"],
     choices: [32]
-  }/***, 
+  }/***,
   {
     stimulus: ["<div class = 'center'><p>You will be presented with rapidly \
     changing patterns of rectangles. Through these rectangles, faces \
@@ -280,7 +280,7 @@ var instructions = {
 
 /*** bRMS practice block ***/
 //Define stimuli pool for experiment
-var all_images = []; 
+var all_images = [];
 //enter gender option here(?) in the meanwhile using female  *yuval
 for (i=0; i < total_num_faces; i++) {   //creating an array of all possible images names    *yuval
 	all_images.push('../static/images/f' + ('000'+i).substr(-3, 3) + '.jpg');
@@ -314,9 +314,7 @@ for (i = 0; i < train_repetitions; i++) {
   });
 }
 
-all_images = all_images.slice (train_repetitions, train_repetitions + exp_num_faces); //getting rid of images used in practice 
-
-
+all_images = all_images.slice (train_repetitions, train_repetitions + exp_num_faces); //getting rid of images used in practice
 
 
 /* define block */
@@ -362,7 +360,7 @@ var performanceMSG_practice = {
   <p>Press the space bar to continue.</p></div>"
     }],
     choices: [32],
-	
+
 	//** needed eventualy **//
       on_finish: function() {
 //      psiturk.saveData({
@@ -373,7 +371,7 @@ var performanceMSG_practice = {
       },
   };
 
-    
+
   jsPsych.data.addProperties({
     train_repeats: 1
   });
@@ -428,34 +426,7 @@ var used_images = all_images.slice (0, exp_num_faces);  //creating 'used_images[
 var stimuli = [];
 
 
-for (i = 0; i <= exp_num_faces - 1; i++) { //inserting the first repeat into stimuli[]   *yuval
-  stimuli.push({
-    type: "bRMS",
-    stimulus: used_images[i],
-    data: {
-      stimulus: used_images[i],
-      //stimulus_type: 'normal', ---> no need(?) *yuval 
-      timing_response: trialLength,
-      stimulus_alpha: stimAlphas,
-      timing_post_trial: 100,
-      within_ITI: ITI - 100,
-      fade_in_time: fade_in_time,
-      fade_out_time: fade_out_time,
-      fade_out_length: fade_out_length,
-	  trial: i + 1  // set trial number in data (1,2,3.. etc.) *yuval
-    },
-    stimulus_alpha: stimAlphas,
-    timing_post_trial: 100,
-    within_ITI: ITI - 100,
-    timing_response: trialLength,
-    fade_in_time: fade_in_time,
-    fade_out_time: fade_out_time,
-    fade_out_length: fade_out_length
-  });
-}
-
-
-for (i = 1; i < repetitions; i++) {  //inserting the next repeats   *yuval
+for (i = 0; i < repetitions; i++) {  // Create a list of trials, repeating the experiment block x amount of times. *yaniv
 	used_images = jsPsych.randomization.shuffle (used_images); //shuffling again for next repeats  *yuval
 	for (ii = 0; ii <= exp_num_faces - 1; ii++) {
 		stimuli.push({
@@ -463,7 +434,6 @@ for (i = 1; i < repetitions; i++) {  //inserting the next repeats   *yuval
 			stimulus: used_images[ii],
 			data: {
 				stimulus: used_images[ii],
-				//stimulus_type: 'normal', ---> no need(?) *yuval 
 				timing_response: trialLength,
 				stimulus_alpha: stimAlphas,
 				timing_post_trial: 100,
@@ -483,8 +453,8 @@ for (i = 1; i < repetitions; i++) {  //inserting the next repeats   *yuval
 		});
 	}
 }
-		
-		
+
+
 
 
 /* Add breaks */
@@ -539,7 +509,7 @@ var behave = {
     }
   },
   lastWarned = -experiment_performance_trials;
- 
+
 for (ii = breakEvery; ii < stimuli.length; ii += (breakEvery + 1)) {
   stimuli.splice(ii, 0, breakMsg);
 };
@@ -554,9 +524,9 @@ for (ii = 1; ii < (stimuli.length - 1); ii += 2) {
 var bRMS_block = {
   timeline: stimuli,
   visUnit: function() {
-    return unitSize 
+    return unitSize
   },
-  on_finish: function() {                 
+  on_finish: function() {
     var d = new Date();
     if ((d.getTime() - exp_start_time) > time_limit) {   //problem. d and exp_start_time always equal. *ask yaniv
       jsPsych.endCurrentTimeline();
@@ -653,9 +623,9 @@ var debrief = [{
 
 // Put it all together
 var experiment_blocks = [];
- experiment_blocks.push(fullscreen);   
- experiment_blocks.push(preCalibIns)  
- experiment_blocks.push(makeSureLoop); 
+ experiment_blocks.push(fullscreen);
+ experiment_blocks.push(preCalibIns)
+ experiment_blocks.push(makeSureLoop);
  experiment_blocks.push(instructions);
  experiment_blocks.push(secChanceLoop);
  experiment_blocks.push(mainBlockIns);
@@ -730,7 +700,3 @@ jsPsych.init({
     }
   }
 });
-
-
-
-
