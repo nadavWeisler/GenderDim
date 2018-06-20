@@ -18,4 +18,4 @@
 14. V Check experiment parameters: contrast (0.4). break every (50)
 
 ### Can do:
-1. Online testing for animation performance.
+1. V Online testing for animation performance.
