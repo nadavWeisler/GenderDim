@@ -522,7 +522,7 @@ var bRMS_block = {
   },
   on_finish: function() {
     var d = new Date();
-    if ((d.getTime() - exp_start_time) > time_limit) { //problem. d and exp_start_time always equal. *ask yaniv
+    if ((d.getTime() - exp_start_time) > time_limit) { 
       jsPsych.endCurrentTimeline();
     }
   }
