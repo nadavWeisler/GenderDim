@@ -625,6 +625,18 @@ var debrief = [{
         options: ["Male", "Female", "Other"],
         required: true
       },
+	  {
+        prompt: "Do you consider yourself to be:",
+        options: ["a) Heterosexual or straight;", "b) Gay or lesbian;", "c) Bisexual?"],
+        required: true
+      },
+	  {
+        prompt: "People are different in their sexual attraction to other people.\
+		Which best describes your feelings?",
+        options: ["Only attracted to females", "Mostly attracted to females",
+		"Equally attracted to females and males", "Mostly attracted to males","Only attracted to males", "Not sure"],
+        required: true
+      },
       {
         prompt: "What is your dominant hand?",
         options: ["Right", "Left", "Both"],
