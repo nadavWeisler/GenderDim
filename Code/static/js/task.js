@@ -403,17 +403,17 @@ var performanceMSG_practice = {
       }
     },
     timeline: [{
-      stimulus: '<div class='center'>\
+      stimulus: "<div class = 'center'>\
   <p>It seems that the animation is not presented correctly on your computer.</p>\
   <p>This may be due to old hardware, or too many open applications.</p>\
   <p>The experiment will stop now. <p>\
   <p>We would like to compensate you for your time. \
-  Please return this HIT, and search for "Animation compensation HIT".\
+  Please return this HIT, and search for 'Animation compensation HIT'.\
   Accept it, and you will be paid soon.</p>\
   <p>Thank you for your time!</p>\
   <p>For any questions, please email \
   yaniv.abir+mturk@mail.huji.ac.il</p>\
-  <p>Press the space bar to continue.</p></div>'
+  <p>Press the space bar to continue.</p></div>"
     }],
     choices: [32],
     //** needed eventualy **//
