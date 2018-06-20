@@ -1,6 +1,6 @@
 // Parameters
 var ITI = 1000,
-  time_limit = 2 * (60 * 1000),
+  time_limit = 50 * (60 * 1000),
   stimAlphas = 0.4,
   unitSize = 4,
   breakEvery = 50,
