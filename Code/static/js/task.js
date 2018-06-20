@@ -51,51 +51,51 @@ var preCalibInsText = [{
     <p>Please read the instructions carefully.</p>\
     <p align='center'><i>Press the space bar to continue.</i></p></div>"],
     choices: [32]
-  }//,
-/***
-  {
-    stimulus: ["<div class='center'><p>We will begin by calibrating the experiment \
-    for the size of your screen.</p>\
-    <p>After this short calibration, we will continue to the main task for \
-    this study.</p>\
-    <p align='center'><i>Press the space bar to continue.</i></p></div>"],
-    choices: [32]
-  },
-  {
-    stimulus: ["<div class='center'><p>For the calibration stage, you will need a coin.</p>\
-    <p>Any US coin will do.</p>\
-    <p align='center'><i>Press the space bar to continue.</i></p></div>"],
-    choices: [32]
-  },
-  {
-    stimulus: ["<div class='center'><img src='/static/images/coin_demo.jpg' height='400'></img>\
-    <p>You will be asked to position the coin\
-    as shown in the picture. You will place it against your screen,\
-    within an empty circle presented to you.</p>\
-    <p align='center'><i>Press the space bar to continue.</i></p></div>"],
-    choices: [32]
-  },
-  {
-    stimulus: ["<div class='center'><p>Using the up and down arrow keys, \
-    you will then adjust the size of the empty circle, so that it matches the \
-    size of your coin.</p>\
-    <p align='center'><i>Press the space bar to continue.</i></p></div>"],
-    choices: [32]
-  },
-  {
-    stimulus: ["<div class='center'><p>Take your time in doing so, as this measurement\
-    will be used throughout the study to make sure images are presented to \
-    you in their correct size.</p>\
-    <p>When you are done adjusting the circle size, press the space bar to \
-    continue to the main task.\
-    <p align='center'><i>Press the space bar to continue.</i></p></div>"],
-    choices: [32]
-  },
-  {
-    stimulus: ["<div class='center'><p>Please have a coin at hand.</p>\
-    <p>Press the space bar to start the calibration stage.</p></div>"],
-    choices: [32]
-  } ***/
+  } //,
+  /***
+    {
+      stimulus: ["<div class='center'><p>We will begin by calibrating the experiment \
+      for the size of your screen.</p>\
+      <p>After this short calibration, we will continue to the main task for \
+      this study.</p>\
+      <p align='center'><i>Press the space bar to continue.</i></p></div>"],
+      choices: [32]
+    },
+    {
+      stimulus: ["<div class='center'><p>For the calibration stage, you will need a coin.</p>\
+      <p>Any US coin will do.</p>\
+      <p align='center'><i>Press the space bar to continue.</i></p></div>"],
+      choices: [32]
+    },
+    {
+      stimulus: ["<div class='center'><img src='/static/images/coin_demo.jpg' height='400'></img>\
+      <p>You will be asked to position the coin\
+      as shown in the picture. You will place it against your screen,\
+      within an empty circle presented to you.</p>\
+      <p align='center'><i>Press the space bar to continue.</i></p></div>"],
+      choices: [32]
+    },
+    {
+      stimulus: ["<div class='center'><p>Using the up and down arrow keys, \
+      you will then adjust the size of the empty circle, so that it matches the \
+      size of your coin.</p>\
+      <p align='center'><i>Press the space bar to continue.</i></p></div>"],
+      choices: [32]
+    },
+    {
+      stimulus: ["<div class='center'><p>Take your time in doing so, as this measurement\
+      will be used throughout the study to make sure images are presented to \
+      you in their correct size.</p>\
+      <p>When you are done adjusting the circle size, press the space bar to \
+      continue to the main task.\
+      <p align='center'><i>Press the space bar to continue.</i></p></div>"],
+      choices: [32]
+    },
+    {
+      stimulus: ["<div class='center'><p>Please have a coin at hand.</p>\
+      <p>Press the space bar to start the calibration stage.</p></div>"],
+      choices: [32]
+    } ***/
 ];
 
 var preCalibIns = {
@@ -230,43 +230,44 @@ var instruction_text = [{
     stimulus: ["<p>We will now continue to the main task.</p>\
     <p align='center'><i>Press the space bar to continue.</i></p>"],
     choices: [32]
-  }/***,
-  {
-    stimulus: ["<div class = 'center'><p>You will be presented with rapidly \
-    changing patterns of rectangles. Through these rectangles, faces \
-    will appear. Your task will be to indicate the location of \
-    the faces, or any part of them, as soon as they appear.</p>\
-    <p align='center'><i>Press the space bar to continue.</i></p></div>"],
-    choices: [32]
-  },
-  {
-    stimulus: ["<div class = 'center'><p>If the face appeared in the right half \
-    of the screen, press the right key. If the face appeared in the left half \
-    of the screen, press the left key.</p>\
-    <p align='center'><i>Press the space bar to continue.</i></p></div>"],
-    choices: [32]
-  },
-  {
-    stimulus: ["<div class = 'center'><p>Please perform this task as accurately \
-    and quickly as you can.</p>\
-    <p align='center'><i>Press the space bar to continue.</i></p></div>"],
-    choices: [32]
-  },
-  {
-    stimulus: ["<div class = 'center'><p>During the task, please focus your gaze at\
-     the plus sign in the middle.<br>Even though the faces appear to the left\
-      and right of the plus sign, it is important that you look at the plus \
-      sign at all times.</p>\
-      <p align='center'></i>Press the space bar to continue.</i></p></div>"],
-    choices: [32]
-  },
-  {
-    stimulus: ["<div class='center'>\
-    <img src='/static/images/keys.jpg'></img>\
-    <p>Place your fingers on the 'D' and 'K' keys as shown in the picture, \
-    and press either one of these keys to continue.</p></div>"],
-    choices: [68, 75]
-  } ***/
+  }
+  /***,
+    {
+      stimulus: ["<div class = 'center'><p>You will be presented with rapidly \
+      changing patterns of rectangles. Through these rectangles, faces \
+      will appear. Your task will be to indicate the location of \
+      the faces, or any part of them, as soon as they appear.</p>\
+      <p align='center'><i>Press the space bar to continue.</i></p></div>"],
+      choices: [32]
+    },
+    {
+      stimulus: ["<div class = 'center'><p>If the face appeared in the right half \
+      of the screen, press the right key. If the face appeared in the left half \
+      of the screen, press the left key.</p>\
+      <p align='center'><i>Press the space bar to continue.</i></p></div>"],
+      choices: [32]
+    },
+    {
+      stimulus: ["<div class = 'center'><p>Please perform this task as accurately \
+      and quickly as you can.</p>\
+      <p align='center'><i>Press the space bar to continue.</i></p></div>"],
+      choices: [32]
+    },
+    {
+      stimulus: ["<div class = 'center'><p>During the task, please focus your gaze at\
+       the plus sign in the middle.<br>Even though the faces appear to the left\
+        and right of the plus sign, it is important that you look at the plus \
+        sign at all times.</p>\
+        <p align='center'></i>Press the space bar to continue.</i></p></div>"],
+      choices: [32]
+    },
+    {
+      stimulus: ["<div class='center'>\
+      <img src='/static/images/keys.jpg'></img>\
+      <p>Place your fingers on the 'D' and 'K' keys as shown in the picture, \
+      and press either one of these keys to continue.</p></div>"],
+      choices: [68, 75]
+    } ***/
 ];
 
 var instructions = {
@@ -282,8 +283,8 @@ var instructions = {
 //Define stimuli pool for experiment
 var all_images = [];
 //enter gender option here(?) in the meanwhile using female  *yuval
-for (i=0; i < total_num_faces; i++) {   //creating an array of all possible images names    *yuval
-	all_images.push('../static/images/f' + ('000'+i).substr(-3, 3) + '.jpg');
+for (i = 0; i < total_num_faces; i++) { //creating an array of all possible images names    *yuval
+  all_images.push('../static/images/f' + ('000' + i).substr(-3, 3) + '.jpg');
 }
 all_images = jsPsych.randomization.shuffle(all_images); //after shuffling, the chosen images will be taken from this 'all_images' array. *yuval
 
@@ -291,8 +292,8 @@ all_images = jsPsych.randomization.shuffle(all_images); //after shuffling, the c
 
 // Define stimuli for practice
 var pre_practice_stimuli = all_images;
-pre_practice_stimuli = pre_practice_stimuli.slice (0, train_repetitions);  //take first images for practice (not sure if 'pre' array neccesary but works well)  *yuval
-var practice_stimuli=[];
+pre_practice_stimuli = pre_practice_stimuli.slice(0, train_repetitions); //take first images for practice (not sure if 'pre' array neccesary but works well)  *yuval
+var practice_stimuli = [];
 
 for (i = 0; i < train_repetitions; i++) {
   practice_stimuli.push({
@@ -314,7 +315,7 @@ for (i = 0; i < train_repetitions; i++) {
   });
 }
 
-all_images = all_images.slice (train_repetitions, train_repetitions + exp_num_faces); //getting rid of images used in practice
+all_images = all_images.slice(train_repetitions, train_repetitions + exp_num_faces); //getting rid of images used in practice
 
 
 /* define block */
@@ -361,20 +362,20 @@ var performanceMSG_practice = {
     }],
     choices: [32],
 
-	//** needed eventualy **//
-      on_finish: function() {
-//      psiturk.saveData({
-//        success: function() {
-            jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
-//        }
-//      });
-      },
+    //** needed eventualy **//
+    on_finish: function() {
+      //      psiturk.saveData({
+      //        success: function() {
+      jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
+      //        }
+      //      });
+    },
   };
 
 
-  jsPsych.data.addProperties({
-    train_repeats: 1
-  });
+jsPsych.data.addProperties({
+  train_repeats: 1
+});
 
 var secChanceLoop = {
   timeline: [performanceMSG_practice, bRMS_practice, stop_practice_loop],
@@ -422,36 +423,36 @@ var mainBlockIns = {
 // Define stimuli for bRMS
 
 
-var used_images = all_images.slice (0, exp_num_faces);  //creating 'used_images[]', holding all and only faces going to be used in the main block. *yuval
+var used_images = all_images.slice(0, exp_num_faces); //creating 'used_images[]', holding all and only faces going to be used in the main block. *yuval
 var stimuli = [];
 
 
-for (i = 0; i < repetitions; i++) {  // Create a list of trials, repeating the experiment block x amount of times. *yaniv
-	used_images = jsPsych.randomization.shuffle (used_images); //shuffling again for next repeats  *yuval
-	for (ii = 0; ii <= exp_num_faces - 1; ii++) {
-		stimuli.push({
-			type: "bRMS",
-			stimulus: used_images[ii],
-			data: {
-				stimulus: used_images[ii],
-				timing_response: trialLength,
-				stimulus_alpha: stimAlphas,
-				timing_post_trial: 100,
-				within_ITI: ITI - 100,
-				fade_in_time: fade_in_time,
-				fade_out_time: fade_out_time,
-				fade_out_length: fade_out_length,
-				trial: (i * exp_num_faces) + ii + 1  // set trial number in data (example: 301,302...) *yuval
-			},
-			stimulus_alpha: stimAlphas,
-			timing_post_trial: 100,
-			within_ITI: ITI - 100,
-			timing_response: trialLength,
-			fade_in_time: fade_in_time,
-			fade_out_time: fade_out_time,
-			fade_out_length: fade_out_length
-		});
-	}
+for (i = 0; i < repetitions; i++) { // Create a list of trials, repeating the experiment block x amount of times. *yaniv
+  used_images = jsPsych.randomization.shuffle(used_images); //shuffling again for next repeats  *yuval
+  for (ii = 0; ii <= exp_num_faces - 1; ii++) {
+    stimuli.push({
+      type: "bRMS",
+      stimulus: used_images[ii],
+      data: {
+        stimulus: used_images[ii],
+        timing_response: trialLength,
+        stimulus_alpha: stimAlphas,
+        timing_post_trial: 100,
+        within_ITI: ITI - 100,
+        fade_in_time: fade_in_time,
+        fade_out_time: fade_out_time,
+        fade_out_length: fade_out_length,
+        trial: (i * exp_num_faces) + ii + 1 // set trial number in data (example: 301,302...) *yuval
+      },
+      stimulus_alpha: stimAlphas,
+      timing_post_trial: 100,
+      within_ITI: ITI - 100,
+      timing_response: trialLength,
+      fade_in_time: fade_in_time,
+      fade_out_time: fade_out_time,
+      fade_out_length: fade_out_length
+    });
+  }
 }
 
 
@@ -476,20 +477,15 @@ var behave = {
     choices: [32],
     conditional_function: function() {
       var trialType = jsPsych.currentTrial().type,
-        acc_trialN = jsPsych.data.get().filterCustom(function(x) {
-          return x.trial_type == 'bRMS' &
-            x.stimulus_alpha >= experiment_performance_alpha
-        }).count(),
-        rt_trialN = jsPsych.data.get().filterCustom(function(x) {
-          return x.trial_type == 'bRMS'
+        trialN = jsPsych.data.get().filter({
+          trial_type: "bRMS"
         }).count();
 
       if (trialType == 'bRMS' && // This isn't a break
         jsPsych.currentTrial().data.trial > lastWarned + experiment_performance_trials && // unwarned
-        ((acc_trialN >= experiment_performance_trials && // sufficient acc data
-            jsPsych.data.get().filterCustom(function(x) {
-              return x.trial_type == 'bRMS' &
-                x.stimulus_alpha >= experiment_performance_alpha
+        ((trialN >= experiment_performance_trials && // sufficient acc data
+            jsPsych.data.get().filter({
+              trial_type: "bRMS"
             }).last(experiment_performance_trials).select('acc').mean() < experiment_performance_thresh) || // performance bad
           (rt_trialN >= experiment_RT_trials && // sufficient rt data
             jsPsych.data.get().filter({
@@ -498,10 +494,10 @@ var behave = {
               return x.rt < experiment_RT_threshold
             }).count() >= experiment_RT_trial_threshold))) { // enough fast trials
         lastWarned = jsPsych.currentTrial().data.trial;
-		console.log("condition is true");
+        //console.log("condition is true");
         return true;
       } else {
-		  console.log("condition is false");
+        //console.log("condition is false");
         return false;
       }
     }
@@ -526,7 +522,7 @@ var bRMS_block = {
   },
   on_finish: function() {
     var d = new Date();
-    if ((d.getTime() - exp_start_time) > time_limit) {   //problem. d and exp_start_time always equal. *ask yaniv
+    if ((d.getTime() - exp_start_time) > time_limit) { //problem. d and exp_start_time always equal. *ask yaniv
       jsPsych.endCurrentTimeline();
     }
   }
@@ -621,14 +617,14 @@ var debrief = [{
 
 // Put it all together
 var experiment_blocks = [];
- experiment_blocks.push(fullscreen);
- experiment_blocks.push(preCalibIns)
- experiment_blocks.push(makeSureLoop);
- experiment_blocks.push(instructions);
- experiment_blocks.push(secChanceLoop);
- experiment_blocks.push(mainBlockIns);
- experiment_blocks.push(bRMS_block);
- experiment_blocks = experiment_blocks.concat(debrief);
+experiment_blocks.push(fullscreen);
+experiment_blocks.push(preCalibIns)
+experiment_blocks.push(makeSureLoop);
+experiment_blocks.push(instructions);
+experiment_blocks.push(secChanceLoop);
+experiment_blocks.push(mainBlockIns);
+experiment_blocks.push(bRMS_block);
+experiment_blocks = experiment_blocks.concat(debrief);
 
 // Save data function
 var textFile = null,
@@ -670,18 +666,18 @@ var d = new Date();
 jsPsych.init({
   timeline: experiment_blocks,
   fullscreen: true,
- // on_finish: function() {
- //   psiturk.recordUnstructuredData('jsPsych_event_data',
- //     jsPsych.data.getInteractionData().json());
- //   psiturk.saveData({
+  // on_finish: function() {
+  //   psiturk.recordUnstructuredData('jsPsych_event_data',
+  //     jsPsych.data.getInteractionData().json());
+  //   psiturk.saveData({
   //    success: function() {
   //      psiturk.completeHIT();
-   //   }
+  //   }
   //  })
- // },
- // on_data_update: function(data) {
+  // },
+  // on_data_update: function(data) {
   //  psiturk.recordTrialData(data);
- // },
+  // },
   preload_images: images,
   on_finish: function() {
     var timestamp = Date.now()
@@ -694,7 +690,7 @@ jsPsych.init({
     // Record start time of bRMS block
     if (exp_start_time == 0 && jsPsych.currentTrial().type == 'bRMS') {
       exp_start_time = d.getTime();
-    //  psiturk.finishInstructions(); // advance status to 2
+      //  psiturk.finishInstructions(); // advance status to 2
     }
   }
 });
