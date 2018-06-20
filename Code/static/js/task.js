@@ -282,7 +282,7 @@ var instructions = {
 //Define stimuli pool for experiment
 var all_images = [];
 //enter gender option here(?) in the meanwhile using female  *yuval
-for (i = 0; i < total_num_faces; i++) { //creating an array of all possible images names    *yuval
+for (i = 1; i <= total_num_faces; i++) { //creating an array of all possible images names    *yuval
   all_images.push('../static/images/f' + ('000' + i).substr(-3, 3) + '.jpg');
 }
 all_images = jsPsych.randomization.shuffle(all_images); //after shuffling, the chosen images will be taken from this 'all_images' array. *yuval
