@@ -108,6 +108,12 @@ jsPsych.plugins["bRMS"] = (function() {
         type: jsPsych.plugins.parameterType.INT,
         default: 50,
         description: 'Mondrian presentation criterion for small problem'
+      },
+      includeVBLinData: {
+        type: jsPsych.plugins.parameterType.BOOL,
+        default: false,
+        description: 'Whether to include vbl array in data: increases memory \
+        requirements.'
       }
     }
   }
@@ -208,14 +214,14 @@ jsPsych.plugins["bRMS"] = (function() {
         } // some vbl refresh seperately for mondrian and stim for each presentation
 
         bProblem = mond['nums'].filter(function(value, index) {
-          return mond['mond_duration'][index] > bigProblemDuration & value > 0 ||
-            mond['stim_duration'][index] > bigProblemDuration
+          return mond['mond_duration'][index] > trial.bigProblemDuration & value > 0 ||
+            mond['stim_duration'][index] > trial.bigProblemDuration
         }).length; // Count instances of lag in animation
 
         sProblem = mond['nums'].filter(function(value, index) {
-          return mond['stim_duration'][index] > smallProblemStimDuration &&
-            (mond['mond_duration'][index] < smallProblemMondDuration ||
-              mond['mond_duration'][index + 1] < smallProblemMondDuration)
+          return mond['stim_duration'][index] > trial.smallProblemStimDuration &&
+            (mond['mond_duration'][index] < trial.smallProblemMondDuration ||
+              mond['mond_duration'][index + 1] < trial.smallProblemMondDuration)
         }).length; // Count instances of stimulus presented for too long.
 
         // gather the data to store for the trial
@@ -226,10 +232,14 @@ jsPsych.plugins["bRMS"] = (function() {
           "key_press": response.key,
           "acc": (response.key == 68 & stimulus_side == 0) |
             (response.key == 75 & stimulus_side == 1),
-          "vbl": vbl,
+          'animation_performance': mond,
           'bProblem': bProblem,
           'sProblem': sProblem
         };
+
+        if (trial.includeVBLinData) {
+          trial_data.vbl = vbl;
+        }
 
         // clear the display
         display_element.innerHTML = '';
