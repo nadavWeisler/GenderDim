@@ -1,7 +1,7 @@
 // Parameters
 var ITI = 1000,
   time_limit = 60 * (60 * 1000),
-  stimAlphas = [0.65],
+  stimAlphas = 0.4,
   unitSize = 4,
   breakEvery = 50,
   exp_num_faces = 50, // number of different faces to use per experiment  *yuval
@@ -453,8 +453,6 @@ for (i = 0; i < repetitions; i++) {  // Create a list of trials, repeating the e
 		});
 	}
 }
-
-
 
 
 /* Add breaks */
