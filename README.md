@@ -15,7 +15,7 @@
 11. Yaniv tests experiment.
 12. Clone to Amazon cloud.
 13. V Check behaviour policing.
-14. Check experiment parameters: contrast (0.4). break every (?)
+14. V Check experiment parameters: contrast (0.4). break every (50)
 
 ### Can do:
 1. Online testing for animation performance.

@@ -8,19 +8,18 @@ var ITI = 1000,
   repetitions = 4, // number of repetitions of each face   *yuval
   total_num_faces = 300, // total number of faces in the database (e.g 300- for one gender only) (images file) *yuval
   train_repetitions = 25,
-  train_alpha = 0.60, //keep this below stimAlphas. important for behave part. *yuval
+  train_alpha = 0.4,
   trialLength = 0, // 0 is no limit
   fade_in_time = 1,
   fade_out_time = 15,
   fade_out_length = 5,
   training_allowed_repeat = 2,
-  experiment_performance_alpha = train_alpha,
-  experiment_performance_thresh = .8,
-  experiment_performance_trials = 3,
+  experiment_performance_thresh = .85,
+  experiment_performance_trials = 20,
   train_performance_thresh = .85,
   experiment_RT_trials = 8,
   experiment_RT_trial_threshold = 5,
-  experiment_RT_threshold = 450;
+  experiment_RT_threshold = 300;
 
 
 /*** Enter fullscreen ***/
@@ -522,7 +521,7 @@ var bRMS_block = {
   },
   on_finish: function() {
     var d = new Date();
-    if ((d.getTime() - exp_start_time) > time_limit) { 
+    if ((d.getTime() - exp_start_time) > time_limit) {
       jsPsych.endCurrentTimeline();
     }
   }
