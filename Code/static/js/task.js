@@ -24,7 +24,8 @@ var ITI = 1000,
   bProblemCrit = 5 / train_repetitions;
 
 /*** Male / Female condition ***/
-var condition = Math.round(Math.random()); // 0 is male, 1 is female. Resolved here now, later from Psiturk
+// Now comes from Psiturk
+// var condition = Math.round(Math.random()); // 0 is male, 1 is female. Resolved here now, later from Psiturk
 
 /*** Enter fullscreen ***/
 var fullscreen = {
@@ -45,7 +46,7 @@ var images = ['/static/images/Nickel.png',
 ];
 
 // Initiate psiturk
-//var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
+var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
 
 /*** Instructions ***/
 var preCalibInsText = [{
@@ -385,11 +386,11 @@ var performanceMSG_practice = {
 
     //** needed eventualy **//
     on_finish: function() {
-      //      psiturk.saveData({
-      //        success: function() {
-      jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
-      //        }
-      //      });
+      psiturk.saveData({
+        success: function() {
+          jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
+        }
+      });
     },
   },
   poor_animation = {
@@ -418,11 +419,11 @@ var performanceMSG_practice = {
     choices: [32],
     //** needed eventualy **//
     on_finish: function() {
-      //      psiturk.saveData({
-      //        success: function() {
-      jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
-      //        }
-      //      });
+      psiturk.saveData({
+        success: function() {
+          jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
+        }
+      });
     }
   }
 
@@ -596,14 +597,6 @@ var debrief = [{
     choices: [32]
   },
   {
-    type: 'survey-likert',
-    preamble: "Please don't select any option on this scale, just press Continue",
-    questions: [{
-      prompt: 'How difficult did you find the task:',
-      labels: ["1<br>Not difficult at all", "2", "3", "4", "5<br>Very difficult"],
-      required: false
-    }]
-  }, {
     type: "survey-text",
     questions: [{
         prompt: "How old are you?",
@@ -623,18 +616,6 @@ var debrief = [{
     questions: [{
         prompt: "What is your gender?",
         options: ["Male", "Female", "Other"],
-        required: true
-      },
-	  {
-        prompt: "Do you consider yourself to be:",
-        options: ["a) Heterosexual or straight;", "b) Gay or lesbian;", "c) Bisexual?"],
-        required: true
-      },
-	  {
-        prompt: "People are different in their sexual attraction to other people.\
-		Which best describes your feelings?",
-        options: ["Only attracted to females", "Mostly attracted to females",
-		"Equally attracted to females and males", "Mostly attracted to males","Only attracted to males", "Not sure"],
         required: true
       },
       {
@@ -668,117 +649,139 @@ var debrief = [{
     }],
   },
   {
+    type: 'survey-multi-choice',
+    questions: [{
+        prompt: "Do you consider yourself to be:",
+        options: ["Heterosexual or straight", "Gay or lesbian", "Bisexual", "Other"],
+        required: false
+      },
+      {
+        prompt: "People are different in their sexual attraction to other people.\
+  Which best describes your feelings?",
+        options: ["Only attracted to females", "Mostly attracted to females",
+          "Equally attracted to females and males", "Mostly attracted to males", "Only attracted to males", "Not sure"
+        ],
+        required: false
+      }
+    ]
+  },
+  {
     type: "html-keyboard-response",
     stimulus: "<div class='center'><p>You will now be presented with a few more statements.\
 	Please read each statement carfully, and indicate the degree to which you agree or disagree with it.</p>\
     <p>We remind you that your answers are completely annonymous.</p>\
     <p align='center'><i>Press the space bar to continue.</i></p></div>",
     choices: [32]
-  },
-  {
-    type: 'survey-likert',
-    questions: [{
-      prompt: "Laws designed to protect the environment pose too high a cost on businesses that contribute to the economy.",
-      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-      required: true
-    }]
-  },
-  {
-    type: 'survey-likert',
-    questions: [{
-      prompt: "A woman should have the right to choose what to do with her body, even if that means getting an abortion.", //*reverse scored 
-      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-      required: true
-    }]
-  },
-  {
-    type: 'survey-likert',
-    questions: [{
-      prompt: "The United States should not have invaded Iraq.",    //*reverse scored
-      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-      required: true
-    }]
-  },
-  {
-    type: 'survey-likert',
-    questions: [{
-      prompt: "Homosexuals should have the same right to marriage as anyone else.",   //*reverse scored
-      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-      required: true
-    }]
-  },
-  {
-    type: 'survey-likert',
-    questions: [{
-      prompt: "Affirmative action gives those groups with a history of oppression a chance to get ahead.",  //*reverse scored
-      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-      required: true
-    }]
-  },
-  {
-    type: 'survey-likert',
-    questions: [{
-      prompt: "Gun control laws are not nearly strict enough.",    //*reverse scored 
-      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-      required: true
-    }]
-  },
-  {
-    type: 'survey-likert',
-    questions: [{
-      prompt: "It is important for our legal system to use the death penalty as punishment for heinous crimes. ",
-      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-      required: true
-    }]
-  },
-  {
-    type: 'survey-likert',
-    questions: [{
-      prompt: "Stem Cell research has important implications for medical advances, and should be pursued at all costs.", //*reverse scored
-      labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-      required: true
-    }]
-  },
-  {
-    type: "survey-multi-choice",
-    questions: [{
-        prompt: "Do you have a driver’s license?",
-        options: ["Yes", "No"],
+  }
+].concat(jsPsych.randomization.shuffle(
+  [{
+      type: 'survey-likert',
+      questions: [{
+        prompt: "Laws designed to protect the environment pose too high a cost on businesses that contribute to the economy.",
+        labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
         required: true
       }]
-  },
-  {
-    type: 'survey-likert',
+    },
+    {
+      type: 'survey-likert',
+      questions: [{
+        prompt: "A woman should have the right to choose what to do with her body, even if that means getting an abortion.", //*reverse scored
+        labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+        required: true
+      }]
+    },
+    {
+      type: 'survey-likert',
+      questions: [{
+        prompt: "The United States should not have invaded Iraq.", //*reverse scored
+        labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+        required: true
+      }]
+    },
+    {
+      type: 'survey-likert',
+      questions: [{
+        prompt: "Homosexuals should have the same right to marriage as anyone else.", //*reverse scored
+        labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+        required: true
+      }]
+    },
+    {
+      type: 'survey-likert',
+      questions: [{
+        prompt: "Affirmative action gives those groups with a history of oppression a chance to get ahead.", //*reverse scored
+        labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+        required: true
+      }]
+    },
+    {
+      type: 'survey-likert',
+      questions: [{
+        prompt: "Gun control laws are not nearly strict enough.", //*reverse scored
+        labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+        required: true
+      }]
+    },
+    {
+      type: 'survey-likert',
+      questions: [{
+        prompt: "It is important for our legal system to use the death penalty as punishment for heinous crimes. ",
+        labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+        required: true
+      }]
+    },
+    {
+      type: 'survey-likert',
+      questions: [{
+        prompt: "Stem Cell research has important implications for medical advances, and should be pursued at all costs.", //*reverse scored
+        labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
+        required: true
+      }]
+    }
+  ])).concat([{
+    type: "survey-multi-choice",
     questions: [{
-      prompt: "Compared to the average driver, how would you rate your own driving?",    //*reverse scored 
-      labels: ["1<br>Much worse than average", "2", "3", "4", "5", "6", "7<br>Much better than average"],
+      prompt: "Do you have a driver’s license?",
+      options: ["Yes", "No"],
       required: true
     }]
   },
   {
-    type: "survey-multi-choice",
-    questions: [{
-        prompt: "Were you involved in a road accident, as either a driver or a pedestrian, during the last three years (including minor accidents resulting in no injuries or damage)?",
-        options: ["Yes", "No"],
-        required: true
-      }]
+    conditional_function: function() {
+      if (JSON.parse(jsPsych.data.get().last(1).select('responses').values).Q0 == 'Yes') {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    timeline: [{
+        type: 'survey-likert',
+        questions: [{
+          prompt: "Compared to the average driver, how would you rate your own driving?", //*reverse scored
+          labels: ["1<br>Much worse than average", "2", "3", "4", "5", "6", "7<br>Much better than average"],
+          required: true
+        }]
+      },
+      {
+        type: "survey-text",
+        questions: [{
+          prompt: "In your best estimate, how many accidents were you involved in during the last three years as a driver, including minor accidents with no injuries or damage? (If none, mark 0)",
+          columns: 20,
+          rows: 1,
+          value: ''
+        }],
+      }
+    ],
   },
   {
     type: "survey-text",
     questions: [{
-        prompt: "In your best estimate, how many accidents were you involved in during the last three years as a driver, including minor accidents with no injuries or damage? (If none, mark 0)",
-        columns: 20,
-        rows: 1,
-        value: ''
-      },
-      {
-        prompt: 'In your best estimate, how many accidents were you involved in during the last three years as a pedestrian,\
+      prompt: 'In your best estimate, how many accidents were you involved in during the last three years as a pedestrian,\
 		including minor accidents with no injuries or damage? (If none, mark 0)',
-        columns: 60,
-        rows: 1,
-        value: ''
-      }
-    ]
+      columns: 60,
+      rows: 1,
+      value: ''
+    }]
   },
   {
     type: "html-keyboard-response",
@@ -791,7 +794,7 @@ var debrief = [{
     <p>Press the space bar to complete this HIT.</p></div>',
     choices: [32]
   }
-];
+]);
 
 
 // Put it all together
@@ -805,38 +808,38 @@ experiment_blocks.push(mainBlockIns);
 experiment_blocks.push(bRMS_block);
 experiment_blocks = experiment_blocks.concat(debrief);
 
-// Save data function
-var textFile = null,
-  makeTextFile = function(text) {
-    var data = new Blob([text], {
-      type: 'text/plain'
-    });
-
-    // If we are replacing a previously generated file we need to
-    // manually revoke the object URL to avoid memory leaks.
-    if (textFile !== null) {
-      window.URL.revokeObjectURL(textFile);
-    }
-
-    textFile = window.URL.createObjectURL(data);
-
-    // returns a URL you can use as a href
-    return textFile;
-  };
-
-var saveData = function(data, filename) {
-  var link = document.createElement('a');
-  link.setAttribute('download', filename);
-  link.href = makeTextFile(data);
-  document.body.appendChild(link);
-
-  // wait for the link to be added to the document
-  window.requestAnimationFrame(function() {
-    var event = new MouseEvent('click');
-    link.dispatchEvent(event);
-    document.body.removeChild(link);
-  });
-}
+// Save data to file functions
+// var textFile = null,
+//   makeTextFile = function(text) {
+//     var data = new Blob([text], {
+//       type: 'text/plain'
+//     });
+//
+//     // If we are replacing a previously generated file we need to
+//     // manually revoke the object URL to avoid memory leaks.
+//     if (textFile !== null) {
+//       window.URL.revokeObjectURL(textFile);
+//     }
+//
+//     textFile = window.URL.createObjectURL(data);
+//
+//     // returns a URL you can use as a href
+//     return textFile;
+//   };
+//
+// var saveData = function(data, filename) {
+//   var link = document.createElement('a');
+//   link.setAttribute('download', filename);
+//   link.href = makeTextFile(data);
+//   document.body.appendChild(link);
+//
+//   // wait for the link to be added to the document
+//   window.requestAnimationFrame(function() {
+//     var event = new MouseEvent('click');
+//     link.dispatchEvent(event);
+//     document.body.removeChild(link);
+//   });
+// }
 
 
 // Initiate experiment
@@ -845,31 +848,25 @@ var d = new Date();
 jsPsych.init({
   timeline: experiment_blocks,
   fullscreen: true,
-  // on_finish: function() {
-  //   psiturk.recordUnstructuredData('jsPsych_event_data',
-  //     jsPsych.data.getInteractionData().json());
-  //   psiturk.saveData({
-  //    success: function() {
-  //      psiturk.completeHIT();
-  //   }
-  //  })
-  // },
+  on_finish: function(data) {
+    psiturk.recordUnstructuredData('jsPsych_trial_data', data);
+    psiturk.recordUnstructuredData('jsPsych_event_data',
+      jsPsych.data.getInteractionData().json());
+    psiturk.saveData({
+      success: function() {
+        psiturk.completeHIT();
+      }
+    })
+  },
   // on_data_update: function(data) {
   //  psiturk.recordTrialData(data);
   // },
   preload_images: images,
-  on_finish: function() {
-    var timestamp = Date.now()
-    saveData(jsPsych.data.get().csv(), "DimKids1_Data_" + timestamp + ".csv");
-    window.requestAnimationFrame(function() {
-      saveData(jsPsych.data.get().json(), "DimKids1_Data_" + timestamp + ".txt");
-    });
-  },
   on_trial_start: function() {
     // Record start time of bRMS block
     if (exp_start_time == 0 && jsPsych.currentTrial().type == 'bRMS') {
       exp_start_time = d.getTime();
-      //  psiturk.finishInstructions(); // advance status to 2
+      psiturk.finishInstructions(); // advance status to 2
     }
   }
 });
