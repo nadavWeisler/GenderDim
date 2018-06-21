@@ -2,7 +2,7 @@
 title = A psychology study
 description = A 30 minute long study in psychology. Only for persons above 18 years of age who are fluent in English. Complete a simple task for $1.50.
 amt_keywords = Perception, Psychology, study
-lifetime = 24
+lifetime = 10
 us_only = true
 approve_requirement = 95
 contact_email_on_error = yaniv.abir+mturk@mail.huji.ac.il
