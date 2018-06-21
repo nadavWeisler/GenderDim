@@ -386,11 +386,11 @@ var performanceMSG_practice = {
 
     //** needed eventualy **//
     on_finish: function() {
-            psiturk.saveData({
-              success: function() {
-      jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
-              }
-            });
+      psiturk.saveData({
+        success: function() {
+          jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
+        }
+      });
     },
   },
   poor_animation = {
@@ -419,11 +419,11 @@ var performanceMSG_practice = {
     choices: [32],
     //** needed eventualy **//
     on_finish: function() {
-            psiturk.saveData({
-              success: function() {
-      jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
-              }
-            });
+      psiturk.saveData({
+        success: function() {
+          jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
+        }
+      });
     }
   }
 
@@ -597,14 +597,6 @@ var debrief = [{
     choices: [32]
   },
   {
-    type: 'survey-likert',
-    preamble: "Please don't select any option on this scale, just press Continue",
-    questions: [{
-      prompt: 'How difficult did you find the task:',
-      labels: ["1<br>Not difficult at all", "2", "3", "4", "5<br>Very difficult"],
-      required: false
-    }]
-  }, {
     type: "survey-text",
     questions: [{
         prompt: "How old are you?",
@@ -626,16 +618,17 @@ var debrief = [{
         options: ["Male", "Female", "Other"],
         required: true
       },
-	  {
+      {
         prompt: "Do you consider yourself to be:",
         options: ["a) Heterosexual or straight;", "b) Gay or lesbian;", "c) Bisexual?"],
         required: true
       },
-	  {
+      {
         prompt: "People are different in their sexual attraction to other people.\
 		Which best describes your feelings?",
         options: ["Only attracted to females", "Mostly attracted to females",
-		"Equally attracted to females and males", "Mostly attracted to males","Only attracted to males", "Not sure"],
+          "Equally attracted to females and males", "Mostly attracted to males", "Only attracted to males", "Not sure"
+        ],
         required: true
       },
       {
@@ -695,7 +688,7 @@ var debrief = [{
   {
     type: 'survey-likert',
     questions: [{
-      prompt: "The United States should not have invaded Iraq.",    //*reverse scored
+      prompt: "The United States should not have invaded Iraq.", //*reverse scored
       labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
       required: true
     }]
@@ -703,7 +696,7 @@ var debrief = [{
   {
     type: 'survey-likert',
     questions: [{
-      prompt: "Homosexuals should have the same right to marriage as anyone else.",   //*reverse scored
+      prompt: "Homosexuals should have the same right to marriage as anyone else.", //*reverse scored
       labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
       required: true
     }]
@@ -711,7 +704,7 @@ var debrief = [{
   {
     type: 'survey-likert',
     questions: [{
-      prompt: "Affirmative action gives those groups with a history of oppression a chance to get ahead.",  //*reverse scored
+      prompt: "Affirmative action gives those groups with a history of oppression a chance to get ahead.", //*reverse scored
       labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
       required: true
     }]
@@ -719,7 +712,7 @@ var debrief = [{
   {
     type: 'survey-likert',
     questions: [{
-      prompt: "Gun control laws are not nearly strict enough.",    //*reverse scored
+      prompt: "Gun control laws are not nearly strict enough.", //*reverse scored
       labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
       required: true
     }]
@@ -743,15 +736,15 @@ var debrief = [{
   {
     type: "survey-multi-choice",
     questions: [{
-        prompt: "Do you have a driver’s license?",
-        options: ["Yes", "No"],
-        required: true
-      }]
+      prompt: "Do you have a driver’s license?",
+      options: ["Yes", "No"],
+      required: true
+    }]
   },
   {
     type: 'survey-likert',
     questions: [{
-      prompt: "Compared to the average driver, how would you rate your own driving?",    //*reverse scored
+      prompt: "Compared to the average driver, how would you rate your own driving?", //*reverse scored
       labels: ["1<br>Much worse than average", "2", "3", "4", "5", "6", "7<br>Much better than average"],
       required: true
     }]
@@ -759,10 +752,10 @@ var debrief = [{
   {
     type: "survey-multi-choice",
     questions: [{
-        prompt: "Were you involved in a road accident, as either a driver or a pedestrian, during the last three years (including minor accidents resulting in no injuries or damage)?",
-        options: ["Yes", "No"],
-        required: true
-      }]
+      prompt: "Were you involved in a road accident, as either a driver or a pedestrian, during the last three years (including minor accidents resulting in no injuries or damage)?",
+      options: ["Yes", "No"],
+      required: true
+    }]
   },
   {
     type: "survey-text",
@@ -851,10 +844,10 @@ jsPsych.init({
     psiturk.recordUnstructuredData('jsPsych_event_data',
       jsPsych.data.getInteractionData().json());
     psiturk.saveData({
-     success: function() {
-       psiturk.completeHIT();
-    }
-   })
+      success: function() {
+        psiturk.completeHIT();
+      }
+    })
   },
   // on_data_update: function(data) {
   //  psiturk.recordTrialData(data);
@@ -864,7 +857,7 @@ jsPsych.init({
     // Record start time of bRMS block
     if (exp_start_time == 0 && jsPsych.currentTrial().type == 'bRMS') {
       exp_start_time = d.getTime();
-       psiturk.finishInstructions(); // advance status to 2
+      psiturk.finishInstructions(); // advance status to 2
     }
   }
 });
