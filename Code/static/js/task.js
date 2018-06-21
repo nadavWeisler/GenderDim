@@ -849,7 +849,8 @@ jsPsych.init({
   timeline: experiment_blocks,
   fullscreen: true,
   on_finish: function(data) {
-    psiturk.recordUnstructuredData('jsPsych_trial_data', data);
+    psiturk.recordUnstructuredData('jsPsych_trial_data',
+      jsPsych.data.get().json());
     psiturk.recordUnstructuredData('jsPsych_event_data',
       jsPsych.data.getInteractionData().json());
     psiturk.saveData({
