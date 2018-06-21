@@ -860,13 +860,6 @@ jsPsych.init({
   //  psiturk.recordTrialData(data);
   // },
   preload_images: images,
-  on_finish: function() {
-    var timestamp = Date.now()
-    saveData(jsPsych.data.get().csv(), "DimKids1_Data_" + timestamp + ".csv");
-    window.requestAnimationFrame(function() {
-      saveData(jsPsych.data.get().json(), "DimKids1_Data_" + timestamp + ".txt");
-    });
-  },
   on_trial_start: function() {
     // Record start time of bRMS block
     if (exp_start_time == 0 && jsPsych.currentTrial().type == 'bRMS') {
