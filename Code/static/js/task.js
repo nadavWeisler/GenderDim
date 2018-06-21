@@ -45,7 +45,7 @@ var images = ['/static/images/Nickel.png',
 ];
 
 // Initiate psiturk
-//var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
+var psiturk = new PsiTurk(uniqueId, adServerLoc, mode);
 
 /*** Instructions ***/
 var preCalibInsText = [{
@@ -385,11 +385,11 @@ var performanceMSG_practice = {
 
     //** needed eventualy **//
     on_finish: function() {
-      //      psiturk.saveData({
-      //        success: function() {
+            psiturk.saveData({
+              success: function() {
       jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
-      //        }
-      //      });
+              }
+            });
     },
   },
   poor_animation = {
@@ -418,11 +418,11 @@ var performanceMSG_practice = {
     choices: [32],
     //** needed eventualy **//
     on_finish: function() {
-      //      psiturk.saveData({
-      //        success: function() {
+            psiturk.saveData({
+              success: function() {
       jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
-      //        }
-      //      });
+              }
+            });
     }
   }
 
@@ -686,7 +686,7 @@ var debrief = [{
   {
     type: 'survey-likert',
     questions: [{
-      prompt: "A woman should have the right to choose what to do with her body, even if that means getting an abortion.", //*reverse scored 
+      prompt: "A woman should have the right to choose what to do with her body, even if that means getting an abortion.", //*reverse scored
       labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
       required: true
     }]
@@ -718,7 +718,7 @@ var debrief = [{
   {
     type: 'survey-likert',
     questions: [{
-      prompt: "Gun control laws are not nearly strict enough.",    //*reverse scored 
+      prompt: "Gun control laws are not nearly strict enough.",    //*reverse scored
       labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
       required: true
     }]
@@ -750,7 +750,7 @@ var debrief = [{
   {
     type: 'survey-likert',
     questions: [{
-      prompt: "Compared to the average driver, how would you rate your own driving?",    //*reverse scored 
+      prompt: "Compared to the average driver, how would you rate your own driving?",    //*reverse scored
       labels: ["1<br>Much worse than average", "2", "3", "4", "5", "6", "7<br>Much better than average"],
       required: true
     }]
@@ -845,18 +845,18 @@ var d = new Date();
 jsPsych.init({
   timeline: experiment_blocks,
   fullscreen: true,
-  // on_finish: function() {
-  //   psiturk.recordUnstructuredData('jsPsych_event_data',
-  //     jsPsych.data.getInteractionData().json());
-  //   psiturk.saveData({
-  //    success: function() {
-  //      psiturk.completeHIT();
-  //   }
-  //  })
-  // },
-  // on_data_update: function(data) {
-  //  psiturk.recordTrialData(data);
-  // },
+  on_finish: function() {
+    psiturk.recordUnstructuredData('jsPsych_event_data',
+      jsPsych.data.getInteractionData().json());
+    psiturk.saveData({
+     success: function() {
+       psiturk.completeHIT();
+    }
+   })
+  },
+  on_data_update: function(data) {
+   psiturk.recordTrialData(data);
+  },
   preload_images: images,
   on_finish: function() {
     var timestamp = Date.now()
@@ -869,7 +869,7 @@ jsPsych.init({
     // Record start time of bRMS block
     if (exp_start_time == 0 && jsPsych.currentTrial().type == 'bRMS') {
       exp_start_time = d.getTime();
-      //  psiturk.finishInstructions(); // advance status to 2
+       psiturk.finishInstructions(); // advance status to 2
     }
   }
 });
