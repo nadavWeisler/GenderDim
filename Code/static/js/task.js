@@ -846,7 +846,8 @@ var d = new Date();
 jsPsych.init({
   timeline: experiment_blocks,
   fullscreen: true,
-  on_finish: function() {
+  on_finish: function(data) {
+    psiturk.recordUnstructuredData('jsPsych_trial_data', data);
     psiturk.recordUnstructuredData('jsPsych_event_data',
       jsPsych.data.getInteractionData().json());
     psiturk.saveData({
@@ -855,9 +856,9 @@ jsPsych.init({
     }
    })
   },
-  on_data_update: function(data) {
-   psiturk.recordTrialData(data);
-  },
+  // on_data_update: function(data) {
+  //  psiturk.recordTrialData(data);
+  // },
   preload_images: images,
   on_finish: function() {
     var timestamp = Date.now()
