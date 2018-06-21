@@ -755,14 +755,6 @@ var debrief = [{
     }]
   },
   {
-    type: "survey-multi-choice",
-    questions: [{
-      prompt: "Were you involved in a road accident, as either a driver or a pedestrian, during the last three years (including minor accidents resulting in no injuries or damage)?",
-      options: ["Yes", "No"],
-      required: true
-    }]
-  },
-  {
     type: "survey-text",
     questions: [{
         prompt: "In your best estimate, how many accidents were you involved in during the last three years as a driver, including minor accidents with no injuries or damage? (If none, mark 0)",
