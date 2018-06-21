@@ -747,29 +747,41 @@ var debrief = [{
     }]
   },
   {
-    type: 'survey-likert',
-    questions: [{
-      prompt: "Compared to the average driver, how would you rate your own driving?", //*reverse scored
-      labels: ["1<br>Much worse than average", "2", "3", "4", "5", "6", "7<br>Much better than average"],
-      required: true
-    }]
+    conditional_function: function() {
+      if (JSON.parse(jsPsych.data.get().last(1).select('responses').values).Q0 == 'Yes') {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    timeline: [{
+        type: 'survey-likert',
+        questions: [{
+          prompt: "Compared to the average driver, how would you rate your own driving?", //*reverse scored
+          labels: ["1<br>Much worse than average", "2", "3", "4", "5", "6", "7<br>Much better than average"],
+          required: true
+        }]
+      },
+      {
+        type: "survey-text",
+        questions: [{
+          prompt: "In your best estimate, how many accidents were you involved in during the last three years as a driver, including minor accidents with no injuries or damage? (If none, mark 0)",
+          columns: 20,
+          rows: 1,
+          value: ''
+        }],
+      }
+    ],
   },
   {
     type: "survey-text",
     questions: [{
-        prompt: "In your best estimate, how many accidents were you involved in during the last three years as a driver, including minor accidents with no injuries or damage? (If none, mark 0)",
-        columns: 20,
-        rows: 1,
-        value: ''
-      },
-      {
-        prompt: 'In your best estimate, how many accidents were you involved in during the last three years as a pedestrian,\
+      prompt: 'In your best estimate, how many accidents were you involved in during the last three years as a pedestrian,\
 		including minor accidents with no injuries or damage? (If none, mark 0)',
-        columns: 60,
-        rows: 1,
-        value: ''
-      }
-    ]
+      columns: 60,
+      rows: 1,
+      value: ''
+    }]
   },
   {
     type: "html-keyboard-response",
