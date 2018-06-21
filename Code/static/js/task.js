@@ -181,7 +181,7 @@ var makeSure = {
   type: 'html-keyboard-response',
   prompt: ['<p style="line-height: 56px"><b>Are you sure the circle is as close as can be around your coin?</b></p>\
   <p align="center"><i>Press the space bar if you are sure.</i></p>\
-  <p align="center"><i>Press the r key start again.</i></p>'],
+  <p align="center"><i>Press the r key to start again.</i></p>'],
   stimulus: function() {
     var coinSize = unitSize * sizes[coinInd];
     return x = '<svg style="block: inline" width="800" height="300">\
