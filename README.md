@@ -11,7 +11,7 @@
 7. V Check experiment time limit - might not be working. // Yuval
 8. V Update consent form.
 9. V Update ad.
-10. Yuval tests experiment.
+10. V Yuval tests experiment.
 11. Yaniv tests experiment.
 12. Clone to Amazon cloud.
 13. V Check behaviour policing.
