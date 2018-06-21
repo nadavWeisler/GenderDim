@@ -24,7 +24,8 @@ var ITI = 1000,
   bProblemCrit = 5 / train_repetitions;
 
 /*** Male / Female condition ***/
-var condition = Math.round(Math.random()); // 0 is male, 1 is female. Resolved here now, later from Psiturk
+// Now comes from Psiturk
+// var condition = Math.round(Math.random()); // 0 is male, 1 is female. Resolved here now, later from Psiturk
 
 /*** Enter fullscreen ***/
 var fullscreen = {
