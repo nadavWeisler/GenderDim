@@ -114,7 +114,7 @@ jsPsych.plugins["bRMS-test"] = (function() {
         default: false,
         description: 'Whether to include vbl array in data: increases memory \
         requirements.'
-      }
+      },
       prompt: {
         type: jsPsych.plugins.parameterType.STRING,
         default: "<p>Testing for the \
