@@ -374,12 +374,13 @@ jsPsych.plugins["bRMS-test"] = (function() {
       ctx.fillStyle = 'grey';
       ctx.fillRect(0, 0, frameWidth+50, frameHeight+50)
 
-      // var cover_text  = document.createElement('div');
-      // cover_text.id = 'cover_text';
-      // var textContent = document.createTextNode("Please wait, testing for the \
-      // compatibility of your personal computer. This will take 15 seconds.");
-      // cover_text.appendChild(textContent);
-      // display_element.append(cover_text)
+      var cover_text  = document.createElement('div');
+      cover_text.id = 'cover_text';
+      cover_text.className = 'jspsych-html-keyboard-response-stimulus'
+      var textContent = document.createTextNode("Please wait, testing for the \
+      compatibility of your personal computer. This will take 15 seconds.");
+      cover_text.appendChild(textContent);
+      display_element.append(cover_text)
 
 
       // Animation

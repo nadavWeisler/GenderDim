@@ -835,13 +835,13 @@ var debrief = [{
 var experiment_blocks = [];
 experiment_blocks.push(test_animation);
 experiment_blocks.push(fullscreen);
-experiment_blocks.push(preCalibIns)
-experiment_blocks.push(makeSureLoop);
-experiment_blocks.push(instructions);
-experiment_blocks.push(secChanceLoop);
-experiment_blocks.push(mainBlockIns);
-experiment_blocks.push(bRMS_block);
-experiment_blocks = experiment_blocks.concat(debrief);
+// experiment_blocks.push(preCalibIns)
+// experiment_blocks.push(makeSureLoop);
+// experiment_blocks.push(instructions);
+// experiment_blocks.push(secChanceLoop);
+// experiment_blocks.push(mainBlockIns);
+// experiment_blocks.push(bRMS_block);
+// experiment_blocks = experiment_blocks.concat(debrief);
 
 // Save data to file functions
 // var textFile = null,
