@@ -235,7 +235,7 @@ jsPsych.plugins["bRMS"] = (function() {
           'animation_performance': mond,
           'bProblem': bProblem,
           'sProblem': sProblem,
-          'trial_began': tria_began
+          'trial_began': trial_began
         };
 
         if (trial.includeVBLinData) {
