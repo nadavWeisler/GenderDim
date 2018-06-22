@@ -616,7 +616,7 @@ var test_animation = {
   fade_out_time: fade_out_time,
   fade_out_length: fade_out_length,
   visUnit: 4,
-  choices: jsPsych.NO_KEYS
+  choices: ["none"]
 }
 
 
