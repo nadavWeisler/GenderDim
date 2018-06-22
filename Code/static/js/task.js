@@ -600,7 +600,7 @@ var test_animation = {
     }
   ],
   data: {
-    timing_response: 0,
+    timing_response: 4,
     stimulus_alpha: stimAlphas,
     timing_post_trial: 100,
     within_ITI: ITI - 100,
@@ -611,7 +611,7 @@ var test_animation = {
   stimulus_alpha: stimAlphas,
   timing_post_trial: 100,
   within_ITI: ITI - 100,
-  timing_response: 0,
+  timing_response: 4,
   fade_in_time: fade_in_time,
   fade_out_time: fade_out_time,
   fade_out_length: fade_out_length,
