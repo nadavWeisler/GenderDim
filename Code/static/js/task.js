@@ -607,7 +607,7 @@ poor_animation = {
     stimulus: "<div class = 'center'>\
 <p>It seems that the animation is not presented correctly on your computer.</p>\
 <p>This may be due to old hardware, or too many open applications.</p>\
-<p><b>Please return this HIT</b></p>.\
+<p><b>Please return this HIT</b>.</p>\
 <p>We'll be glad to see you participating in future HITs.</p>\
 <p>For any questions, please email \
 yaniv.abir+mturk@mail.huji.ac.il</p>\
