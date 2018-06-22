@@ -409,7 +409,7 @@ var performanceMSG_practice = {
   <p>This may be due to old hardware, or too many open applications.</p>\
   <p>The experiment will stop now. <p>\
   <p>We would like to compensate you for your time. \
-  <b>Please return this HIT<b>, and search for 'Animation compensation HIT'.\
+  <b>Please return this HIT</b>, and search for 'Animation compensation HIT'.\
   Accept it, and you will be paid soon.</p>\
   <p><b>Please don't submit the current HIT.</b> If you do, we will not be able \
   to approve your work. We can only pay you via the compensation HIT.</p>\
@@ -423,7 +423,7 @@ var performanceMSG_practice = {
     on_finish: function() {
       psiturk.saveData({
         success: function() {
-          jsPsych.endExperiment('The experiment has been aborted. Please return HIT.');
+          jsPsych.endExperiment('The experiment has been aborted. <b>Please return HIT.</b>');
         }
       });
     }
