@@ -588,7 +588,7 @@ var bRMS_block = {
 
 //** Animation test ** //
 var test_animation = {
-  type: 'brms-test',
+  type: 'bRMS-test',
   timeline: [{
       stimulus: all_images[1]
     },
