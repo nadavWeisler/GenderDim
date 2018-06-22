@@ -386,6 +386,8 @@ jsPsych.plugins["bRMS-test"] = (function() {
       cover_text.innerHTML = trial.prompt;
       cover_text.style.zIndex = 4;
       cover_text.style.position = "absolute";
+      cover_text.style.top = "50%";
+      cover_text.style.transform= "translate(-50%, -50%)";
       display_element.append(cover_text)
 
 
