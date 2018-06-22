@@ -273,6 +273,7 @@ jsPsych.plugins["bRMS-test"] = (function() {
 
         // start the response listener
         if (JSON.stringify(trial.choices) != JSON.stringify(["none"])) {
+          console.log('here');
           var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
             callback_function: after_response,
             valid_responses: trial.choices,
