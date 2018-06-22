@@ -20,8 +20,8 @@ var ITI = 1000,
   experiment_RT_trials = 8,
   experiment_RT_trial_threshold = 5,
   experiment_RT_threshold = 300,
-  sProblemCrit = 5,
-  bProblemCrit = 5 / train_repetitions;
+  sProblemCrit = 8,
+  bProblemCrit = 2;
 
 /*** Male / Female condition ***/
 // Now comes from Psiturk
@@ -392,42 +392,8 @@ var performanceMSG_practice = {
         }
       });
     },
-  },
-  poor_animation = {
-    type: 'html-keyboard-response',
-    conditional_function: function() {
-      if (jsPsych.data.get().last(train_repetitions).select('sProblem').mean() > sProblemCrit ||
-        jsPsych.data.get().last(train_repetitions).select('bProblem').mean() > bProblemCrit) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    timeline: [{
-      stimulus: "<div class = 'center'>\
-  <p>It seems that the animation is not presented correctly on your computer.</p>\
-  <p>This may be due to old hardware, or too many open applications.</p>\
-  <p>The experiment will stop now. <p>\
-  <p>We would like to compensate you for your time. \
-  <b>Please return this HIT</b>, and search for 'Animation compensation HIT'.\
-  Accept it, and you will be paid soon.</p>\
-  <p><b>Please don't submit the current HIT.</b> If you do, we will not be able \
-  to approve your work. We can only pay you via the compensation HIT.</p>\
-  <p>Thank you for your time!</p>\
-  <p>For any questions, please email \
-  yaniv.abir+mturk@mail.huji.ac.il</p>\
-  <p>Press the space bar to continue.</p></div>"
-    }],
-    choices: [32],
-    //** needed eventualy **//
-    on_finish: function() {
-      psiturk.saveData({
-        success: function() {
-          jsPsych.endExperiment('The experiment has been aborted. <b>Please return HIT.</b>');
-        }
-      });
-    }
   }
+
 
 
 jsPsych.data.addProperties({
@@ -435,7 +401,7 @@ jsPsych.data.addProperties({
 });
 
 var secChanceLoop = {
-  timeline: [performanceMSG_practice, bRMS_practice, poor_animation, stop_practice_loop],
+  timeline: [performanceMSG_practice, bRMS_practice, stop_practice_loop],
   loop_function: function() {
     if (jsPsych.data.get().last(train_repetitions).select('acc').mean() < train_performance_thresh) {
       jsPsych.data.addProperties({
@@ -626,6 +592,36 @@ var test_animation = {
   fade_out_length: fade_out_length,
   visUnit: 4,
   choices: ["none"]
+},
+poor_animation = {
+  type: 'html-keyboard-response',
+  conditional_function: function() {
+    if (jsPsych.data.get().last(3).select('sProblem').sum() > sProblemCrit ||
+      jsPsych.data.get().last(3).select('bProblem').sum() > bProblemCrit) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  timeline: [{
+    stimulus: "<div class = 'center'>\
+<p>It seems that the animation is not presented correctly on your computer.</p>\
+<p>This may be due to old hardware, or too many open applications.</p>\
+<p><b>Please return this HIT</b></p>.\
+<p>We'll be glad to see you participating in future HITs.</p>\
+<p>For any questions, please email \
+yaniv.abir+mturk@mail.huji.ac.il</p>\
+<p>Press the space bar to continue.</p></div>"
+  }],
+  choices: [32],
+  //** needed eventualy **//
+  on_finish: function() {
+    psiturk.saveData({
+      success: function() {
+        jsPsych.endExperiment('The experiment has been aborted. <b>Please return HIT.</b>');
+      }
+    });
+  }
 }
 
 
@@ -843,14 +839,15 @@ var debrief = [{
 // Put it all together
 var experiment_blocks = [];
 experiment_blocks.push(test_animation);
+experiment_blocks.push(poor_animation);
 experiment_blocks.push(fullscreen);
-// experiment_blocks.push(preCalibIns)
-// experiment_blocks.push(makeSureLoop);
-// experiment_blocks.push(instructions);
-// experiment_blocks.push(secChanceLoop);
-// experiment_blocks.push(mainBlockIns);
-// experiment_blocks.push(bRMS_block);
-// experiment_blocks = experiment_blocks.concat(debrief);
+experiment_blocks.push(preCalibIns)
+experiment_blocks.push(makeSureLoop);
+experiment_blocks.push(instructions);
+experiment_blocks.push(secChanceLoop);
+experiment_blocks.push(mainBlockIns);
+experiment_blocks.push(bRMS_block);
+experiment_blocks = experiment_blocks.concat(debrief);
 
 // Save data to file functions
 // var textFile = null,
