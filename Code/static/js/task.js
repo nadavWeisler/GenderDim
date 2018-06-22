@@ -586,7 +586,37 @@ var bRMS_block = {
 };
 
 
-
+//** Animation test ** //
+var test_animation = {
+  type: 'brms-test',
+  timeline: [{
+      stimulus: all_images[1]
+    },
+    {
+      stimulus: all_images[2]
+    },
+    {
+      stimulus: all_images[3]
+    }
+  ],
+  data: {
+    timing_response: 4,
+    stimulus_alpha: stimAlphas,
+    timing_post_trial: 100,
+    within_ITI: ITI - 100,
+    fade_in_time: fade_in_time,
+    fade_out_time: fade_out_time,
+    fade_out_length: fade_out_length
+  },
+  stimulus_alpha: stimAlphas,
+  timing_post_trial: 100,
+  within_ITI: ITI - 100,
+  timing_response: 4,
+  fade_in_time: fade_in_time,
+  fade_out_time: fade_out_time,
+  fade_out_length: fade_out_length
+}
+}
 
 //** 7---------Debrief **//
 
@@ -801,6 +831,7 @@ var debrief = [{
 
 // Put it all together
 var experiment_blocks = [];
+experiment_blocks.push(test_animation);
 experiment_blocks.push(fullscreen);
 experiment_blocks.push(preCalibIns)
 experiment_blocks.push(makeSureLoop);
