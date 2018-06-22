@@ -269,6 +269,14 @@ jsPsych.plugins["bRMS-test"] = (function() {
       var start_trial = function() {
         fixation.style.visibility = "visible";
 
+        // end trial if time limit is set
+        if (trial.timing_response > 0) {
+          var t2 = setTimeout(function() {
+            end_trial();
+          }, trial.timing_response * 1000);
+          setTimeoutHandlers.push(t2);
+        }
+
         tl.play();
 
         // start the response listener
@@ -285,14 +293,6 @@ jsPsych.plugins["bRMS-test"] = (function() {
       }
 
       // Make display and animation -----------
-
-      // end trial if time limit is set
-      if (trial.timing_response > 0) {
-        var t2 = setTimeout(function() {
-          end_trial();
-        }, trial.timing_response * 1000);
-        setTimeoutHandlers.push(t2);
-      }
 
 
       // Draw fixation
