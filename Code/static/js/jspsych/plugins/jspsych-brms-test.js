@@ -379,7 +379,7 @@ jsPsych.plugins["bRMS-test"] = (function() {
       var textContent = document.createTextNode("Please wait, testing for the \
       compatibility of your personal computer. This will take 15 seconds.");
       cover_text.appendChild(textContent);
-      display_element.append(cover_test)
+      display_element.append(cover_text)
 
 
       // Animation
