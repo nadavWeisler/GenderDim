@@ -178,14 +178,14 @@ jsPsych.plugins["bRMS"] = (function() {
         // Analyse animation performance
         tvbl = {};
         tvbl['time'] = vbl['time'].filter(function(value, index) {
-          return vbl['mondNum'][index] >= 0
-        }),
-        tvbl['mondNum'] = vbl['mondNum'].filter(function(value, index) {
-          return vbl['mondNum'][index] >= 0
-        }),
-        tvbl['mondAlpha'] = vbl['mondAlpha'].filter(function(value, index) {
-          return vbl['mondNum'][index] >= 0
-        });
+            return vbl['mondNum'][index] >= 0
+          }),
+          tvbl['mondNum'] = vbl['mondNum'].filter(function(value, index) {
+            return vbl['mondNum'][index] >= 0
+          }),
+          tvbl['mondAlpha'] = vbl['mondAlpha'].filter(function(value, index) {
+            return vbl['mondNum'][index] >= 0
+          });
 
         tvbl['refresh'] = [];
         for (i = 0; i < tvbl['time'].length; i++) {
@@ -234,7 +234,8 @@ jsPsych.plugins["bRMS"] = (function() {
             (response.key == 75 & stimulus_side == 1),
           'animation_performance': mond,
           'bProblem': bProblem,
-          'sProblem': sProblem
+          'sProblem': sProblem,
+          'trial_began': tria_began
         };
 
         if (trial.includeVBLinData) {
@@ -378,6 +379,8 @@ jsPsych.plugins["bRMS"] = (function() {
           mondAlpha: [],
           mondNum: []
         },
+        trial_began = 0,
+        d = new Date(),
         j = 0,
         tl = new TimelineMax({
           paused: true,
@@ -396,6 +399,7 @@ jsPsych.plugins["bRMS"] = (function() {
             var op1 = parseFloat(mondrian[1 % trial.mondNum].style.opacity),
               op2 = parseFloat(mondrian[(1 + 1) % trial.mondNum].style.opacity);
 
+            trial_began = d.getTime();
             vbl['time'].push(Math.round(performance.now()));
             vbl['mondAlpha'].push(op1 + op2);
             vbl['mondNum'].push(-1);
