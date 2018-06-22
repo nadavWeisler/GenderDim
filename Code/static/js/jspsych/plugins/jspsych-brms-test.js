@@ -308,7 +308,6 @@ jsPsych.plugins["bRMS-test"] = (function() {
       fixation.height = frameHeight;
       fixation.style.zIndex = 2;
       fixation.style.position = "absolute";
-      fixation.style.border = "20px double #000000";
       fixation.style.visibility = "hidden";
       display_element.append(fixation);
 
@@ -334,7 +333,6 @@ jsPsych.plugins["bRMS-test"] = (function() {
         mondrian[i].height = frameHeight;
         mondrian[i].style.zIndex = 1;
         mondrian[i].style.position = "absolute";
-        mondrian[i].style.border = "20px double #000000";
         mondrian[i].style.opacity = 0;
         display_element.append(mondrian[i]);
 
@@ -361,7 +359,6 @@ jsPsych.plugins["bRMS-test"] = (function() {
       stimulus.height = frameHeight;
       stimulus.style.zIndex = 0;
       stimulus.style.position = "absolute";
-      stimulus.style.border = "20px double #000000";
       stimulus.style.opacity = 0;
       display_element.append(stimulus);
 
