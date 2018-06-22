@@ -421,7 +421,7 @@ var mainBlockText = [{
     stimulus: ["<div class = 'center'><p>You have completed the practice block.</p>\
   <p>You will now continue with the same task. The task may now be more \
   difficult.\
-  You will have 5 short breaks. </p>\
+  You will have 3 short breaks. </p>\
     <p>Press either the 'D' or the 'K' keys to continue.</p></div>"],
     choices: [68, 75]
   },
