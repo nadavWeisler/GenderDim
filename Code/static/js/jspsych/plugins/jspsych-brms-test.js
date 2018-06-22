@@ -383,8 +383,7 @@ jsPsych.plugins["bRMS-test"] = (function() {
       var cover_text  = document.createElement('div');
       cover_text.id = 'cover_text';
       cover_text.className = 'jspsych-html-keyboard-response-stimulus'
-      var textContent = document.createTextNode(trial.prompt);
-      cover_text.appendChild(textContent);
+      cover_text.innerHTML = trial.prompt;
       display_element.append(cover_text)
 
 
