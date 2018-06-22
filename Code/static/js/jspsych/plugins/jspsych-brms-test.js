@@ -115,6 +115,11 @@ jsPsych.plugins["bRMS-test"] = (function() {
         description: 'Whether to include vbl array in data: increases memory \
         requirements.'
       }
+      prompt: {
+        type: jsPsych.plugins.parameterType.STRING,
+        default: "<p>Testing for the \
+        compatibility of your personal computer with this HIT</p>."
+      }
     }
   }
 
@@ -368,7 +373,7 @@ jsPsych.plugins["bRMS-test"] = (function() {
       cover.height = frameHeight;
       cover.style.zIndex = 3;
       cover.style.position = "absolute";
-      cover.style.opacity = 0.5;
+      cover.style.opacity = 1;
       display_element.append(cover);
 
       var ctx = cover.getContext("2d");
@@ -378,8 +383,7 @@ jsPsych.plugins["bRMS-test"] = (function() {
       var cover_text  = document.createElement('div');
       cover_text.id = 'cover_text';
       cover_text.className = 'jspsych-html-keyboard-response-stimulus'
-      var textContent = document.createTextNode("Please wait, testing for the \
-      compatibility of your personal computer. This will take 15 seconds.");
+      var textContent = document.createTextNode(trial.prompt);
       cover_text.appendChild(textContent);
       display_element.append(cover_text)
 

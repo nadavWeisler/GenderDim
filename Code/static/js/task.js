@@ -590,13 +590,22 @@ var bRMS_block = {
 var test_animation = {
   type: 'bRMS-test',
   timeline: [{
-      stimulus: all_images[1]
+      stimulus: all_images[1],
+      prompt: "<p>Testing for the \
+      compatibility of your personal computer with this HIT.</p> \
+      <p>This will take approximately 15 seconds more.</p>"
     },
     {
-      stimulus: all_images[2]
+      stimulus: all_images[2],
+      prompt: "<p>Testing for the \
+      compatibility of your personal computer with this HIT.</p> \
+      <p>This will take approximately 10 seconds more.</p>"
     },
     {
-      stimulus: all_images[3]
+      stimulus: all_images[3],
+      prompt: "<p>Testing for the \
+      compatibility of your personal computer with this HIT.</p> \
+      <p>This will take approximately 5 seconds more.</p>"
     }
   ],
   data: {
