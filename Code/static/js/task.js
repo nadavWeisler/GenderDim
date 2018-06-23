@@ -229,7 +229,7 @@ var makeSureLoop = {
 
 /** 3------- PRACTICE INSTRUCTIONS ***/
 // Change instructions according to condition
-if (condition) {
+if (condition == '1') {
   var gender = 'female';
   var person = 'woman';
   var mersons = 'women';
