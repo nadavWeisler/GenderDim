@@ -554,57 +554,57 @@ var bRMS_block = {
 
 //** Animation test ** //
 var test_animation = {
-  type: 'bRMS-test',
-  timeline: [{
-      stimulus: all_images[1],
-      prompt: "<p>Testing for the \
+    type: 'bRMS-test',
+    timeline: [{
+        stimulus: all_images[1],
+        prompt: "<p>Testing for the \
       compatibility of your personal computer with this HIT.</p> \
       <p>This will take approximately 15 seconds more.</p>"
-    },
-    {
-      stimulus: all_images[2],
-      prompt: "<p>Testing for the \
+      },
+      {
+        stimulus: all_images[2],
+        prompt: "<p>Testing for the \
       compatibility of your personal computer with this HIT.</p> \
       <p>This will take approximately 10 seconds more.</p>"
-    },
-    {
-      stimulus: all_images[3],
-      prompt: "<p>Testing for the \
+      },
+      {
+        stimulus: all_images[3],
+        prompt: "<p>Testing for the \
       compatibility of your personal computer with this HIT.</p> \
       <p>This will take approximately 5 seconds more.</p>"
-    }
-  ],
-  data: {
-    timing_response: 4,
+      }
+    ],
+    data: {
+      timing_response: 4,
+      stimulus_alpha: stimAlphas,
+      timing_post_trial: 100,
+      within_ITI: ITI - 100,
+      fade_in_time: fade_in_time,
+      fade_out_time: fade_out_time,
+      fade_out_length: fade_out_length
+    },
     stimulus_alpha: stimAlphas,
     timing_post_trial: 100,
     within_ITI: ITI - 100,
+    timing_response: 4,
     fade_in_time: fade_in_time,
     fade_out_time: fade_out_time,
-    fade_out_length: fade_out_length
+    fade_out_length: fade_out_length,
+    visUnit: 4,
+    choices: ["none"]
   },
-  stimulus_alpha: stimAlphas,
-  timing_post_trial: 100,
-  within_ITI: ITI - 100,
-  timing_response: 4,
-  fade_in_time: fade_in_time,
-  fade_out_time: fade_out_time,
-  fade_out_length: fade_out_length,
-  visUnit: 4,
-  choices: ["none"]
-},
-poor_animation = {
-  type: 'html-keyboard-response',
-  conditional_function: function() {
-    if (jsPsych.data.get().last(3).select('sProblem').sum() > sProblemCrit ||
-      jsPsych.data.get().last(3).select('bProblem').sum() > bProblemCrit) {
-      return true;
-    } else {
-      return false;
-    }
-  },
-  timeline: [{
-    stimulus: "<div class = 'center'>\
+  poor_animation = {
+    type: 'html-keyboard-response',
+    conditional_function: function() {
+      if (jsPsych.data.get().last(3).select('sProblem').sum() > sProblemCrit ||
+        jsPsych.data.get().last(3).select('bProblem').sum() > bProblemCrit) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    timeline: [{
+      stimulus: "<div class = 'center'>\
 <p>It seems that the animation is not presented correctly on your computer.</p>\
 <p>This may be due to old hardware, or too many open applications.</p>\
 <p><b>Please return this HIT</b>.</p>\
@@ -612,17 +612,17 @@ poor_animation = {
 <p>For any questions, please email \
 yaniv.abir+mturk@mail.huji.ac.il</p>\
 <p>Press the space bar to continue.</p></div>"
-  }],
-  choices: [32],
-  //** needed eventualy **//
-  on_finish: function() {
-    psiturk.saveData({
-      success: function() {
-        jsPsych.endExperiment('The experiment has been aborted. <b>Please return HIT.</b>');
-      }
-    });
+    }],
+    choices: [32],
+    //** needed eventualy **//
+    on_finish: function() {
+      psiturk.saveData({
+        success: function() {
+          jsPsych.endExperiment('The experiment has been aborted. <b>Please return HIT.</b>');
+        }
+      });
+    }
   }
-}
 
 
 //** 7---------Debrief **//
@@ -719,10 +719,10 @@ var debrief = [{
         prompt: "Laws designed to protect the environment pose too high a cost on businesses that contribute to the economy.",
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
         required: true,
-		data: {
-			question: 'Environment laws',
-			reverse: false
-		}
+        data: {
+          question: 'Environment laws',
+          reverse: false
+        }
       }]
     },
     {
@@ -731,10 +731,10 @@ var debrief = [{
         prompt: "A woman should have the right to choose what to do with her body, even if that means getting an abortion.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
         required: true,
-		data: {
-			question: 'Abortion',
-			reverse: true
-		}
+        data: {
+          question: 'Abortion',
+          reverse: true
+        }
       }]
     },
     {
@@ -743,10 +743,10 @@ var debrief = [{
         prompt: "The United States should not have invaded Iraq.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
         required: true,
-		data: {
-			question: 'Iraq',
-			reverse: true
-		}
+        data: {
+          question: 'Iraq',
+          reverse: true
+        }
       }]
     },
     {
@@ -755,10 +755,10 @@ var debrief = [{
         prompt: "Homosexuals should have the same right to marriage as anyone else.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
         required: true,
-		data: {
-			question: 'Homosexuals',
-			reverse: true
-		}
+        data: {
+          question: 'Homosexuals',
+          reverse: true
+        }
       }]
     },
     {
@@ -767,10 +767,10 @@ var debrief = [{
         prompt: "Affirmative action gives those groups with a history of oppression a chance to get ahead.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
         required: true,
-		data: {
-			question: 'Affirmative action',
-			reverse: true
-		}
+        data: {
+          question: 'Affirmative action',
+          reverse: true
+        }
       }]
     },
     {
@@ -779,10 +779,10 @@ var debrief = [{
         prompt: "Gun control laws are not nearly strict enough.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
         required: true,
-		data: {
-			question: 'Gun control',
-			reverse: true
-		}
+        data: {
+          question: 'Gun control',
+          reverse: true
+        }
       }]
     },
     {
@@ -791,10 +791,10 @@ var debrief = [{
         prompt: "It is important for our legal system to use the death penalty as punishment for heinous crimes. ",
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
         required: true,
-		data: {
-			question: 'Death penalty',
-			reverse: false
-		}
+        data: {
+          question: 'Death penalty',
+          reverse: false
+        }
       }]
     },
     {
@@ -803,10 +803,10 @@ var debrief = [{
         prompt: "Stem Cell research has important implications for medical advances, and should be pursued at all costs.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
         required: true,
-		data: {
-			question: 'Stem Cell',
-			reverse: true
-		}
+        data: {
+          question: 'Stem Cell',
+          reverse: true
+        }
       }]
     }
   ])).concat([{
