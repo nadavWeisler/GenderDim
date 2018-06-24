@@ -300,7 +300,7 @@ var instructions = {
 //Define stimuli pool for experiment
 var all_images = [];
 // Choose male / female files
-if (condition) {
+if (condition == '1') {
   var gender = 'f';
 } else {
   var gender = 'm';
