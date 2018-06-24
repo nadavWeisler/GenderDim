@@ -1,6 +1,6 @@
 // Parameters
 var ITI = 1000,
-  time_limit = 50 * (60 * 1000),
+  time_limit = 60 * (60 * 1000),
   stimAlphas = 0.4,
   unitSize = 4,
   breakEvery = 50,
@@ -718,7 +718,11 @@ var debrief = [{
       questions: [{
         prompt: "Laws designed to protect the environment pose too high a cost on businesses that contribute to the economy.",
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-        required: true
+        required: true,
+		data: {
+			question: 'Environment laws',
+			reverse: false
+		}
       }]
     },
     {
@@ -726,7 +730,11 @@ var debrief = [{
       questions: [{
         prompt: "A woman should have the right to choose what to do with her body, even if that means getting an abortion.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-        required: true
+        required: true,
+		data: {
+			question: 'Abortion',
+			reverse: true
+		}
       }]
     },
     {
@@ -734,7 +742,11 @@ var debrief = [{
       questions: [{
         prompt: "The United States should not have invaded Iraq.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-        required: true
+        required: true,
+		data: {
+			question: 'Iraq',
+			reverse: true
+		}
       }]
     },
     {
@@ -742,7 +754,11 @@ var debrief = [{
       questions: [{
         prompt: "Homosexuals should have the same right to marriage as anyone else.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-        required: true
+        required: true,
+		data: {
+			question: 'Homosexuals',
+			reverse: true
+		}
       }]
     },
     {
@@ -750,7 +766,11 @@ var debrief = [{
       questions: [{
         prompt: "Affirmative action gives those groups with a history of oppression a chance to get ahead.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-        required: true
+        required: true,
+		data: {
+			question: 'Affirmative action',
+			reverse: true
+		}
       }]
     },
     {
@@ -758,7 +778,11 @@ var debrief = [{
       questions: [{
         prompt: "Gun control laws are not nearly strict enough.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-        required: true
+        required: true,
+		data: {
+			question: 'Gun control',
+			reverse: true
+		}
       }]
     },
     {
@@ -766,7 +790,11 @@ var debrief = [{
       questions: [{
         prompt: "It is important for our legal system to use the death penalty as punishment for heinous crimes. ",
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-        required: true
+        required: true,
+		data: {
+			question: 'Death penalty',
+			reverse: false
+		}
       }]
     },
     {
@@ -774,7 +802,11 @@ var debrief = [{
       questions: [{
         prompt: "Stem Cell research has important implications for medical advances, and should be pursued at all costs.", //*reverse scored
         labels: ["1<br>Completely Disagree", "2", "3", "4", "5", "6", "7<br>Completely Agree"],
-        required: true
+        required: true,
+		data: {
+			question: 'Stem Cell',
+			reverse: true
+		}
       }]
     }
   ])).concat([{
